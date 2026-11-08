@@ -10,7 +10,7 @@
     "en": "Timetable, grades, exams, notices, and leave requests"
   },
   "description": {
-    "zh": "在 Linux 运行环境里使用 Node.js 版教务 CLI，查询课表、成绩、学分、考试、公告、空闲教室与请假记录。\n账号密码与登录都在插件页完成，首次使用会自动安装 CLI。",
+    "zh": "查询课表、成绩、学分、考试、公告、空闲教室与请假记录；账号密码只在插件页使用",
     "en": "Query timetable, grades, credits, exams, notices, free classrooms, and leave records with the Node.js academic affairs CLI inside the Linux runtime.\nSign-in and credentials are handled on the plugin page, and the CLI installs automatically on first use."
   },
   "icon": "icons/jwxt.png",
