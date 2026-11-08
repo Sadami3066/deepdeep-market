@@ -1,0 +1,19 @@
+{
+  "type": "mcp",
+  "id": "neon",
+  "name": "Neon",
+  "summary": "管理 Neon 项目、分支与 Postgres 数据库",
+  "description": "通过官方 MCP 管理 Neon 项目、分支与 Lakebase Postgres 数据库。\n可以创建分支、查看连接串并执行 SQL。",
+  "tags": [
+    "数据库",
+    "Postgres",
+    "云服务"
+  ],
+  "version": "2.0.0",
+  "mcp": {
+    "url": "https://mcp.neon.tech/mcp",
+    "transport": "http",
+    "headers": {},
+    "authHint": "首次连接需在浏览器登录 Neon 并授权。"
+  }
+}

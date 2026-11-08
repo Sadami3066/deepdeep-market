@@ -1,0 +1,19 @@
+{
+  "type": "mcp",
+  "id": "posthog",
+  "name": "PostHog",
+  "summary": "产品分析、功能开关与实验数据",
+  "description": "查询 PostHog 的产品分析、功能开关、实验与错误数据。\n连接时需要 PostHog API Token。",
+  "tags": [
+    "分析",
+    "数据",
+    "产品"
+  ],
+  "version": "1.0.1",
+  "mcp": {
+    "url": "https://mcp.posthog.com/mcp",
+    "transport": "http",
+    "headers": {},
+    "authHint": "需要 PostHog API Token，连接时按提示填写。"
+  }
+}

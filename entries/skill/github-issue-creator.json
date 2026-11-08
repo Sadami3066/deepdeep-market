@@ -1,0 +1,21 @@
+{
+  "type": "skill",
+  "id": "github-issue-creator",
+  "name": "GitHub Issue 整理",
+  "summary": "把零散信息整理成规范 issue",
+  "description": "把错误日志、语音记录或截图整理成结构清晰的 GitHub issue。\n支持附图与 GIF 作为证据，适合从非正式描述快速建单。",
+  "tags": [
+    "GitHub",
+    "协作"
+  ],
+  "version": "1.0.0",
+  "artifact": {
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/github-issue-creator-1.0.0.zip",
+    "sha256": "52ba6d4a41f0bf18c818b49954d81c88183ae504346f4855abae9aab179ce7c4",
+    "size": 3114
+  },
+  "skill": {
+    "license": "MIT",
+    "source": "https://github.com/microsoft/skills"
+  }
+}

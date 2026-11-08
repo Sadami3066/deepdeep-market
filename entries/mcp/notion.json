@@ -1,0 +1,19 @@
+{
+  "type": "mcp",
+  "id": "notion",
+  "name": "Notion",
+  "summary": "搜索与编辑 Notion 页面、数据库",
+  "description": "连接 Notion 工作区，搜索页面并按需创建或更新内容。\n适合把会议记录、知识库与项目资料接入对话。",
+  "tags": [
+    "笔记",
+    "知识库",
+    "协作"
+  ],
+  "version": "1.0.1",
+  "mcp": {
+    "url": "https://mcp.notion.com/mcp",
+    "transport": "http",
+    "headers": {},
+    "authHint": "首次连接需在浏览器登录 Notion 并授权。"
+  }
+}

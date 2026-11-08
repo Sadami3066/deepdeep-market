@@ -1,0 +1,21 @@
+{
+  "type": "skill",
+  "id": "brainstorming",
+  "name": "头脑风暴",
+  "summary": "动手实现前先梳理需求与方案",
+  "description": "在开始写代码或做任何创作前，用对话把需求、约束与可选方案梳理清楚。\n产出经过确认的设计，再进入实现。\n适合新功能、组件、行为改动或任何从零开始的计划。",
+  "tags": [
+    "规划",
+    "协作"
+  ],
+  "version": "1.0.0",
+  "artifact": {
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/brainstorming-1.0.0.zip",
+    "sha256": "8cecdc0877847c9425b424d4ac938a5471a032259e621c22baf9bc2773e00030",
+    "size": 32015
+  },
+  "skill": {
+    "license": "MIT",
+    "source": "https://github.com/obra/superpowers"
+  }
+}

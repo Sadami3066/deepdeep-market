@@ -1,0 +1,24 @@
+{
+  "type": "plugin",
+  "id": "io.github.whywood.deepdeep.plugin.wecom",
+  "name": "企业微信",
+  "summary": "消息、邮件、文档、日程与待办",
+  "description": "安装官方 wecom-cli 后扫码授权，操作企业微信的消息、邮件、文档、日程与待办。\n账号授权与 CLI 安装都在插件页面完成。",
+  "icon": "icons/wecom.png",
+  "tags": [
+    "企业微信",
+    "办公",
+    "消息"
+  ],
+  "version": "1.0.0",
+  "artifact": {
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/wecom-1.0.0.ddp",
+    "sha256": "5cde582f3420c79624aa72128303326e485942e8ed964d4a2ddd1d95f15fed9e",
+    "size": 965175
+  },
+  "plugin": {
+    "apiLevel": 4,
+    "minHostVersion": "0.2.0",
+    "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2"
+  }
+}

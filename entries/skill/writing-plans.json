@@ -1,0 +1,21 @@
+{
+  "type": "skill",
+  "id": "writing-plans",
+  "name": "编写实施计划",
+  "summary": "把需求拆成可执行的步骤",
+  "description": "当需求已明确但改动跨多个步骤时，先写出分阶段、可验证的实施计划。\n计划包含任务拆分、顺序与每步的验证方式，再开始动代码。",
+  "tags": [
+    "规划",
+    "开发"
+  ],
+  "version": "1.0.0",
+  "artifact": {
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/writing-plans-1.0.0.zip",
+    "sha256": "74f5cd62f93172649a715e32e99b17596b07fe5aa4a466ebe6634e7e31123d81",
+    "size": 5784
+  },
+  "skill": {
+    "license": "MIT",
+    "source": "https://github.com/obra/superpowers"
+  }
+}

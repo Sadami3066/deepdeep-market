@@ -1,0 +1,24 @@
+{
+  "type": "plugin",
+  "id": "io.github.whywood.deepdeep.plugin.jwxt",
+  "name": "中山大学教务",
+  "summary": "课表、成绩、考试、公告与请假",
+  "description": "在 Linux 运行环境里使用 Node.js 版教务 CLI，查询课表、成绩、学分、考试、公告、空闲教室与请假记录。\n账号密码与登录都在插件页完成，首次使用会自动安装 CLI。",
+  "icon": "icons/jwxt.png",
+  "tags": [
+    "中山大学",
+    "教务",
+    "课表"
+  ],
+  "version": "1.0.0",
+  "artifact": {
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/jwxt-1.0.0.ddp",
+    "sha256": "21d488e2284de6b9f9154c8cc8ef1b80f0ea4128beee37f53ca5084b42c4287d",
+    "size": 897325
+  },
+  "plugin": {
+    "apiLevel": 4,
+    "minHostVersion": "0.2.0",
+    "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2"
+  }
+}

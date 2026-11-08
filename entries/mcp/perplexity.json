@@ -1,0 +1,19 @@
+{
+  "type": "mcp",
+  "id": "perplexity",
+  "name": "Perplexity",
+  "summary": "实时网页搜索与研究",
+  "description": "通过 Perplexity API 做实时网页搜索、推理与研究，返回带来源的答案。\n连接时需要 Perplexity API Key。",
+  "tags": [
+    "搜索",
+    "研究",
+    "AI"
+  ],
+  "version": "0.7.0",
+  "mcp": {
+    "url": "https://mcp.perplexity.ai/mcp",
+    "transport": "http",
+    "headers": {},
+    "authHint": "需要 Perplexity API Key，连接时按提示填写。"
+  }
+}

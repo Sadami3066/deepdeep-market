@@ -1,0 +1,19 @@
+{
+  "type": "mcp",
+  "id": "airtable",
+  "name": "Airtable",
+  "summary": "读写 Airtable 数据库与记录",
+  "description": "连接 Airtable 作为数据库与操作层，查询、创建和更新记录。\n适合把表格数据接入对话流程。",
+  "tags": [
+    "数据库",
+    "表格",
+    "协作"
+  ],
+  "version": "0.1.0",
+  "mcp": {
+    "url": "https://mcp.airtable.com/mcp",
+    "transport": "http",
+    "headers": {},
+    "authHint": "首次连接需在浏览器登录 Airtable 并授权。"
+  }
+}

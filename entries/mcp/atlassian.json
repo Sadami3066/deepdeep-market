@@ -1,0 +1,19 @@
+{
+  "type": "mcp",
+  "id": "atlassian",
+  "name": "Atlassian",
+  "summary": "搜索与管理 Jira、Confluence、Loom",
+  "description": "通过 Atlassian Rovo MCP 搜索、创建和管理 Jira、Confluence、Loom 等工作内容。\n首次连接需使用 Atlassian 账号完成 OAuth 授权。",
+  "tags": [
+    "协作",
+    "项目管理",
+    "文档"
+  ],
+  "version": "2.0.0",
+  "mcp": {
+    "url": "https://mcp.atlassian.com/v2/mcp",
+    "transport": "http",
+    "headers": {},
+    "authHint": "首次连接需在浏览器登录 Atlassian 并授权。"
+  }
+}

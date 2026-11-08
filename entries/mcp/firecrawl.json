@@ -1,0 +1,19 @@
+{
+  "type": "mcp",
+  "id": "firecrawl",
+  "name": "Firecrawl",
+  "summary": "网页搜索、抓取与结构化提取",
+  "description": "搜索网页、抓取页面内容并提取结构化数据。\n也可检索论文并抓取多页面站点；公开访问，可选填 Firecrawl API Key。",
+  "tags": [
+    "网页抓取",
+    "搜索",
+    "数据"
+  ],
+  "version": "3.38.0",
+  "mcp": {
+    "url": "https://mcp.firecrawl.dev/v2/mcp",
+    "transport": "http",
+    "headers": {},
+    "authHint": "公开访问；可选填 Firecrawl API Key。"
+  }
+}

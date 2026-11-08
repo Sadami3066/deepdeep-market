@@ -1,0 +1,18 @@
+{
+  "type": "mcp",
+  "id": "canva",
+  "name": "Canva",
+  "summary": "创建、搜索、编辑与导出设计",
+  "description": "在 Canva 中创建、搜索、编辑设计，并导出设计资源。\n适合生成海报、社媒图与演示文稿素材。",
+  "tags": [
+    "设计",
+    "图片"
+  ],
+  "version": "1.0.0",
+  "mcp": {
+    "url": "https://mcp.canva.com/mcp",
+    "transport": "http",
+    "headers": {},
+    "authHint": "首次连接需在浏览器登录 Canva 并授权。"
+  }
+}

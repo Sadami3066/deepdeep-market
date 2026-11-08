@@ -1,0 +1,21 @@
+{
+  "type": "skill",
+  "id": "test-driven-development",
+  "name": "测试驱动开发",
+  "summary": "先写测试再写实现",
+  "description": "在写实现代码前先写会失败的测试，用红-绿-重构推进功能与修复。\n包含如何写出好的测试与常见反模式。\n适合任何新功能或 bug 修复。",
+  "tags": [
+    "测试",
+    "开发"
+  ],
+  "version": "1.0.0",
+  "artifact": {
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/test-driven-development-1.0.0.zip",
+    "sha256": "ad7668b35a0effdd31012c3c9dd594cd641232658fb0c3b93473b1b111d291db",
+    "size": 9373
+  },
+  "skill": {
+    "license": "MIT",
+    "source": "https://github.com/obra/superpowers"
+  }
+}

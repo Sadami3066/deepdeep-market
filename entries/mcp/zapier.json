@@ -1,0 +1,18 @@
+{
+  "type": "mcp",
+  "id": "zapier",
+  "name": "Zapier",
+  "summary": "连接 9000+ 应用与 4 万+ 自动化动作",
+  "description": "通过 Zapier 把助手连接到 9,000 多个应用，执行 40,000 多种自动化动作。\n首次连接需在浏览器登录 Zapier 并完成授权。",
+  "tags": [
+    "自动化",
+    "效率"
+  ],
+  "version": "1.0.1",
+  "mcp": {
+    "url": "https://mcp.zapier.com/api/v1/connect",
+    "transport": "http",
+    "headers": {},
+    "authHint": "首次连接需在浏览器登录 Zapier 并授权。"
+  }
+}
