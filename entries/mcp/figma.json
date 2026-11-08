@@ -1,18 +1,40 @@
 {
   "type": "mcp",
   "id": "figma",
-  "name": "Figma",
-  "summary": "把设计稿、组件与变量接入对话",
-  "description": "读取 Figma 文件中的设计上下文，包括组件、样式与变量。\n适合在实现界面前获取准确的设计信息。",
-  "tags": [
-    "设计",
-    "协作"
-  ],
+  "name": {
+    "zh": "Figma",
+    "en": "Figma"
+  },
+  "summary": {
+    "zh": "把设计稿、组件与变量接入对话",
+    "en": "Bring designs, components, and variables into the conversation"
+  },
+  "description": {
+    "zh": "读取 Figma 文件中的设计上下文，包括组件、样式与变量。\n适合在实现界面前获取准确的设计信息。",
+    "en": "Read design context from Figma files, including components, styles, and variables.\nUseful for getting accurate design details before building UI."
+  },
+  "icon": "icons/figma.png",
+  "tags": {
+    "zh": [
+      "设计",
+      "协作"
+    ],
+    "en": [
+      "Design",
+      "Collaboration"
+    ]
+  },
   "version": "1.0.3",
   "mcp": {
     "url": "https://mcp.figma.com/mcp",
     "transport": "http",
     "headers": {},
-    "authHint": "首次连接需在浏览器登录 Figma 并授权。"
+    "authHint": {
+      "zh": "首次连接需在浏览器登录 Figma 并授权。",
+      "en": "Sign in to Figma in the browser and authorize on first connect."
+    },
+    "auth": {
+      "type": "oauth"
+    }
   }
 }

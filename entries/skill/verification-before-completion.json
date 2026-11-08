@@ -1,16 +1,32 @@
 {
   "type": "skill",
   "id": "verification-before-completion",
-  "name": "完成前验证",
-  "summary": "声称完成前先跑验证并给出证据",
-  "description": "在说「做完了/修好了/测试通过」之前，先运行验证命令并核对输出。\n要求用证据代替断言，避免未经验证的完成声明。",
-  "tags": [
-    "测试",
-    "质量"
-  ],
+  "name": {
+    "zh": "完成前验证",
+    "en": "Verification Before Completion"
+  },
+  "summary": {
+    "zh": "声称完成前先跑验证并给出证据",
+    "en": "Run the checks before claiming done"
+  },
+  "description": {
+    "zh": "在说「做完了/修好了/测试通过」之前，先运行验证命令并核对输出。\n要求用证据代替断言，避免未经验证的完成声明。",
+    "en": "Before saying done, fixed, or passing, run the verification commands and check the output.\nEvidence before assertions: never claim success without running it."
+  },
+  "icon": "icons/superpowers.png",
+  "tags": {
+    "zh": [
+      "测试",
+      "质量"
+    ],
+    "en": [
+      "Testing",
+      "Quality"
+    ]
+  },
   "version": "1.0.0",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/verification-before-completion-1.0.0.zip",
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/skills-20261108/verification-before-completion-1.0.0.zip",
     "sha256": "10b8cb79c2acf14dfc05c71bcb4d15a7020aab6f98111caef2f16922d6a1ba6a",
     "size": 3260
   },

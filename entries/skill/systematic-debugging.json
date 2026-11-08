@@ -1,16 +1,32 @@
 {
   "type": "skill",
   "id": "systematic-debugging",
-  "name": "系统化调试",
-  "summary": "用可复现的流程定位 bug 根因",
-  "description": "遇到 bug、测试失败或意外行为时，先建立可复现证据，再沿调用链追到根因。\n强调先改测试复现、再做最小修复，避免拍脑袋改代码。",
-  "tags": [
-    "调试",
-    "开发"
-  ],
+  "name": {
+    "zh": "系统化调试",
+    "en": "Systematic Debugging"
+  },
+  "summary": {
+    "zh": "用可复现的流程定位 bug 根因",
+    "en": "Trace bugs to their root cause"
+  },
+  "description": {
+    "zh": "遇到 bug、测试失败或意外行为时，先建立可复现证据，再沿调用链追到根因。\n强调先改测试复现、再做最小修复，避免拍脑袋改代码。",
+    "en": "When a bug, failing test, or unexpected behavior shows up, reproduce it first, then trace the call chain to the root cause.\nEmphasizes a failing test followed by the smallest fix instead of guessing."
+  },
+  "icon": "icons/superpowers.png",
+  "tags": {
+    "zh": [
+      "调试",
+      "开发"
+    ],
+    "en": [
+      "Debugging",
+      "Development"
+    ]
+  },
   "version": "1.0.0",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/systematic-debugging-1.0.0.zip",
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/skills-20261108/systematic-debugging-1.0.0.zip",
     "sha256": "6e3b657b5935b56deee18c1ba0f817d3a69b6bab19429b78c68b5ff652544379",
     "size": 14070
   },

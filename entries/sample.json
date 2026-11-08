@@ -1,16 +1,31 @@
 {
   "type": "skill",
   "id": "example-skill",
-  "name": "示例技能",
-  "summary": "一句话说明",
-  "description": "2-4 行说明，写清用途与限制。",
+  "name": {
+    "zh": "示例技能",
+    "en": "Example Skill"
+  },
+  "summary": {
+    "zh": "一句话说明用途",
+    "en": "One line about what it does"
+  },
+  "description": {
+    "zh": "2-4 行说明，写清用途与限制。",
+    "en": "Two to four lines explaining usage and limits."
+  },
   "icon": "icons/example-skill.png",
-  "tags": ["示例"],
+  "tags": {
+    "zh": ["示例"],
+    "en": ["Example"]
+  },
   "version": "1.0.0",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-YYYYMMDD/example-skill-1.0.0.zip",
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/skills-YYYYMMDD/example-skill-1.0.0.zip",
     "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
     "size": 1
   },
-  "skill": { "license": "MIT", "source": "https://example.com" }
+  "skill": {
+    "license": "MIT",
+    "source": "https://example.com"
+  }
 }

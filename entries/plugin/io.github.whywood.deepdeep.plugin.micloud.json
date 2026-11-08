@@ -1,18 +1,34 @@
 {
   "type": "plugin",
   "id": "io.github.whywood.deepdeep.plugin.micloud",
-  "name": "小米云服务",
-  "summary": "读取小米云笔记、待办、相册与短信",
-  "description": "连接小米账号后读取小米云服务中的笔记、待办、短信、联系人、相册与录音。\n首次使用需在插件页面完成小米账号登录。",
+  "name": {
+    "zh": "小米云服务",
+    "en": "Mi Cloud"
+  },
+  "summary": {
+    "zh": "读取小米云笔记、待办、相册与短信",
+    "en": "Notes, tasks, photos, and SMS from Mi Cloud"
+  },
+  "description": {
+    "zh": "连接小米账号后读取小米云服务中的笔记、待办、短信、联系人、相册与录音。\n首次使用需在插件页面完成小米账号登录。",
+    "en": "Connect a Xiaomi account to read notes, tasks, SMS, contacts, photos, and recordings from Mi Cloud.\nSign in to your Xiaomi account on the plugin page first."
+  },
   "icon": "icons/micloud.png",
-  "tags": [
-    "小米云",
-    "笔记",
-    "相册"
-  ],
+  "tags": {
+    "zh": [
+      "小米云",
+      "笔记",
+      "相册"
+    ],
+    "en": [
+      "Mi Cloud",
+      "Notes",
+      "Photos"
+    ]
+  },
   "version": "1.0.1",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/micloud-1.0.1.ddp",
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261108/micloud-1.0.1.ddp",
     "sha256": "e091a1fcf78683c8c1f494eede7a0946801649df74b061960d07057f82772012",
     "size": 929123
   },

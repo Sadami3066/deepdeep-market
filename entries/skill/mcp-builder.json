@@ -1,16 +1,31 @@
 {
   "type": "skill",
   "id": "mcp-builder",
-  "name": "MCP 服务器开发",
-  "summary": "构建高质量 MCP 服务器的指南",
-  "description": "面向 Python(FastMCP)、Node/TypeScript 与 C#/.NET 的 MCP 服务器开发指南。\n覆盖工具设计、评估、最佳实践与多语言模板，适合把外部 API 接入助手。",
-  "tags": [
-    "MCP",
-    "开发"
-  ],
+  "name": {
+    "zh": "MCP 服务器开发",
+    "en": "MCP Server Development"
+  },
+  "summary": {
+    "zh": "构建高质量 MCP 服务器的指南",
+    "en": "Guide to building quality MCP servers"
+  },
+  "description": {
+    "zh": "面向 Python(FastMCP)、Node/TypeScript 与 C#/.NET 的 MCP 服务器开发指南。\n覆盖工具设计、评估、最佳实践与多语言模板，适合把外部 API 接入助手。",
+    "en": "A guide to building MCP servers in Python (FastMCP), Node/TypeScript, and C#/.NET.\nCovers tool design, evaluation, best practices, and templates for exposing external APIs to assistants."
+  },
+  "tags": {
+    "zh": [
+      "MCP",
+      "开发"
+    ],
+    "en": [
+      "MCP",
+      "Development"
+    ]
+  },
   "version": "1.0.0",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/mcp-builder-1.0.0.zip",
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/skills-20261108/mcp-builder-1.0.0.zip",
     "sha256": "fc4ad1bbcab9e599c472dc410a8ef9e192db39d60c59a8515e9d4a7fc8331b88",
     "size": 50517
   },

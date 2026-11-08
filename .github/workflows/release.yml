@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build registry
+        run: node scripts/publish.mjs
+      - name: Validate entries and artifacts
+        run: node scripts/validate.mjs --no-sig
+      - name: Sign registry
+        env:
+          MARKET_PRIVATE_KEY: ${{ secrets.MARKET_PRIVATE_KEY }}
+        run: node scripts/sign.mjs --key-env MARKET_PRIVATE_KEY
+      - name: Verify signature
+        run: node scripts/validate.mjs --pub keys/market-public.pem --skip-artifacts
+      - name: Stage site
+        run: |
+          mkdir -p site
+          cp registry.json registry.json.sig site/
+          cp -r icons site/icons
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,19 +1,49 @@
 {
   "type": "mcp",
   "id": "perplexity",
-  "name": "Perplexity",
-  "summary": "实时网页搜索与研究",
-  "description": "通过 Perplexity API 做实时网页搜索、推理与研究，返回带来源的答案。\n连接时需要 Perplexity API Key。",
-  "tags": [
-    "搜索",
-    "研究",
-    "AI"
-  ],
+  "name": {
+    "zh": "Perplexity",
+    "en": "Perplexity"
+  },
+  "summary": {
+    "zh": "实时网页搜索与研究",
+    "en": "Real-time web search and research"
+  },
+  "description": {
+    "zh": "通过 Perplexity API 做实时网页搜索、推理与研究，返回带来源的答案。\n连接时需要 Perplexity API Key。",
+    "en": "Run real-time web search, reasoning, and research through the Perplexity API, with answers that cite sources.\nRequires a Perplexity API key."
+  },
+  "icon": "icons/perplexity.png",
+  "tags": {
+    "zh": [
+      "搜索",
+      "研究",
+      "AI"
+    ],
+    "en": [
+      "Search",
+      "Research",
+      "AI"
+    ]
+  },
   "version": "0.7.0",
   "mcp": {
     "url": "https://mcp.perplexity.ai/mcp",
     "transport": "http",
     "headers": {},
-    "authHint": "需要 Perplexity API Key，连接时按提示填写。"
+    "authHint": {
+      "zh": "需要 Perplexity API Key，连接时按提示填写。",
+      "en": "Requires a Perplexity API key; you'll be asked for it when connecting."
+    },
+    "auth": {
+      "type": "apiKey",
+      "header": "Authorization",
+      "prefix": "Bearer ",
+      "placeholder": {
+        "zh": "粘贴 Perplexity API Key",
+        "en": "Paste your Perplexity API key"
+      },
+      "helpUrl": "https://www.perplexity.ai/settings/api"
+    }
   }
 }

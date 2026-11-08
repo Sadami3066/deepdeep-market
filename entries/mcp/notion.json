@@ -1,19 +1,42 @@
 {
   "type": "mcp",
   "id": "notion",
-  "name": "Notion",
-  "summary": "搜索与编辑 Notion 页面、数据库",
-  "description": "连接 Notion 工作区，搜索页面并按需创建或更新内容。\n适合把会议记录、知识库与项目资料接入对话。",
-  "tags": [
-    "笔记",
-    "知识库",
-    "协作"
-  ],
+  "name": {
+    "zh": "Notion",
+    "en": "Notion"
+  },
+  "summary": {
+    "zh": "搜索与编辑 Notion 页面、数据库",
+    "en": "Search and edit Notion pages and databases"
+  },
+  "description": {
+    "zh": "连接 Notion 工作区，搜索页面并按需创建或更新内容。\n适合把会议记录、知识库与项目资料接入对话。",
+    "en": "Connect your Notion workspace to search pages and create or update content on demand.\nUseful for bringing meeting notes, knowledge bases, and project docs into the conversation."
+  },
+  "icon": "icons/notion.png",
+  "tags": {
+    "zh": [
+      "笔记",
+      "知识库",
+      "协作"
+    ],
+    "en": [
+      "Notes",
+      "Knowledge Base",
+      "Collaboration"
+    ]
+  },
   "version": "1.0.1",
   "mcp": {
     "url": "https://mcp.notion.com/mcp",
     "transport": "http",
     "headers": {},
-    "authHint": "首次连接需在浏览器登录 Notion 并授权。"
+    "authHint": {
+      "zh": "首次连接需在浏览器登录 Notion 并授权。",
+      "en": "Sign in to Notion in the browser and authorize on first connect."
+    },
+    "auth": {
+      "type": "oauth"
+    }
   }
 }

@@ -1,18 +1,34 @@
 {
   "type": "plugin",
   "id": "io.github.whywood.deepdeep.plugin.jwxt",
-  "name": "中山大学教务",
-  "summary": "课表、成绩、考试、公告与请假",
-  "description": "在 Linux 运行环境里使用 Node.js 版教务 CLI，查询课表、成绩、学分、考试、公告、空闲教室与请假记录。\n账号密码与登录都在插件页完成，首次使用会自动安装 CLI。",
+  "name": {
+    "zh": "中山大学教务",
+    "en": "Sun Yat-sen University Academic Affairs"
+  },
+  "summary": {
+    "zh": "课表、成绩、考试、公告与请假",
+    "en": "Timetable, grades, exams, notices, and leave requests"
+  },
+  "description": {
+    "zh": "在 Linux 运行环境里使用 Node.js 版教务 CLI，查询课表、成绩、学分、考试、公告、空闲教室与请假记录。\n账号密码与登录都在插件页完成，首次使用会自动安装 CLI。",
+    "en": "Query timetable, grades, credits, exams, notices, free classrooms, and leave records with the Node.js academic affairs CLI inside the Linux runtime.\nSign-in and credentials are handled on the plugin page, and the CLI installs automatically on first use."
+  },
   "icon": "icons/jwxt.png",
-  "tags": [
-    "中山大学",
-    "教务",
-    "课表"
-  ],
+  "tags": {
+    "zh": [
+      "中山大学",
+      "教务",
+      "课表"
+    ],
+    "en": [
+      "Sun Yat-sen University",
+      "Academics",
+      "Timetable"
+    ]
+  },
   "version": "1.0.0",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/jwxt-1.0.0.ddp",
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261108/jwxt-1.0.0.ddp",
     "sha256": "21d488e2284de6b9f9154c8cc8ef1b80f0ea4128beee37f53ca5084b42c4287d",
     "size": 897325
   },

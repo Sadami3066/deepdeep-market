@@ -1,19 +1,49 @@
 {
   "type": "mcp",
   "id": "stripe",
-  "name": "Stripe",
-  "summary": "管理客户、商品、支付与发票",
-  "description": "通过 Stripe 官方 MCP 管理客户、商品、支付与发票等数据。\n连接时需要提供 Stripe API Key，请按服务提示授权。",
-  "tags": [
-    "支付",
-    "电商",
-    "财务"
-  ],
+  "name": {
+    "zh": "Stripe",
+    "en": "Stripe"
+  },
+  "summary": {
+    "zh": "管理客户、商品、支付与发票",
+    "en": "Manage customers, products, payments, and invoices"
+  },
+  "description": {
+    "zh": "通过 Stripe 官方 MCP 管理客户、商品、支付与发票等数据。\n连接时需要提供 Stripe API Key，请按服务提示授权。",
+    "en": "Manage customers, products, payments, and invoices through Stripe's official MCP server.\nYou'll need a Stripe API key; follow the prompt to authorize the connection."
+  },
+  "icon": "icons/stripe.png",
+  "tags": {
+    "zh": [
+      "支付",
+      "电商",
+      "财务"
+    ],
+    "en": [
+      "Payments",
+      "Commerce",
+      "Finance"
+    ]
+  },
   "version": "0.2.4",
   "mcp": {
     "url": "https://mcp.stripe.com",
     "transport": "http",
     "headers": {},
-    "authHint": "需要 Stripe API Key，连接时按提示填写。"
+    "authHint": {
+      "zh": "需要 Stripe API Key，连接时按提示填写。",
+      "en": "Requires a Stripe API key; you'll be asked for it when connecting."
+    },
+    "auth": {
+      "type": "apiKey",
+      "header": "Authorization",
+      "prefix": "Bearer ",
+      "placeholder": {
+        "zh": "粘贴 Stripe API Key",
+        "en": "Paste your Stripe API key"
+      },
+      "helpUrl": "https://dashboard.stripe.com/apikeys"
+    }
   }
 }

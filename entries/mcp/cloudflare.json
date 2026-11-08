@@ -1,18 +1,40 @@
 {
   "type": "mcp",
   "id": "cloudflare",
-  "name": "Cloudflare 文档",
-  "summary": "检索 Cloudflare 文档与 API 说明",
-  "description": "提供 Cloudflare 官方文档检索工具，帮助查询产品说明与 API 用法。\n公开服务，无需账号即可连接。",
-  "tags": [
-    "云服务",
-    "文档"
-  ],
+  "name": {
+    "zh": "Cloudflare 文档",
+    "en": "Cloudflare Docs"
+  },
+  "summary": {
+    "zh": "检索 Cloudflare 文档与 API 说明",
+    "en": "Search Cloudflare docs and API references"
+  },
+  "description": {
+    "zh": "提供 Cloudflare 官方文档检索工具，帮助查询产品说明与 API 用法。\n公开服务，无需账号即可连接。",
+    "en": "Search the official Cloudflare documentation for product guides and API usage.\nPublic service: no account needed."
+  },
+  "icon": "icons/cloudflare.png",
+  "tags": {
+    "zh": [
+      "云服务",
+      "文档"
+    ],
+    "en": [
+      "Cloud",
+      "Documentation"
+    ]
+  },
   "version": "1.0.0",
   "mcp": {
     "url": "https://docs.mcp.cloudflare.com/mcp",
     "transport": "http",
     "headers": {},
-    "authHint": "公开访问，无需授权。"
+    "authHint": {
+      "zh": "公开访问，无需授权。",
+      "en": "Public access; no authorization required."
+    },
+    "auth": {
+      "type": "none"
+    }
   }
 }

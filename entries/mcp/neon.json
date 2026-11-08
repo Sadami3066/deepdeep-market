@@ -1,19 +1,42 @@
 {
   "type": "mcp",
   "id": "neon",
-  "name": "Neon",
-  "summary": "管理 Neon 项目、分支与 Postgres 数据库",
-  "description": "通过官方 MCP 管理 Neon 项目、分支与 Lakebase Postgres 数据库。\n可以创建分支、查看连接串并执行 SQL。",
-  "tags": [
-    "数据库",
-    "Postgres",
-    "云服务"
-  ],
+  "name": {
+    "zh": "Neon",
+    "en": "Neon"
+  },
+  "summary": {
+    "zh": "管理 Neon 项目、分支与 Postgres 数据库",
+    "en": "Manage Neon projects, branches, and Postgres databases"
+  },
+  "description": {
+    "zh": "通过官方 MCP 管理 Neon 项目、分支与 Lakebase Postgres 数据库。\n可以创建分支、查看连接串并执行 SQL。",
+    "en": "Manage Neon projects, branches, and Lakebase Postgres databases through the official MCP server.\nCreate branches, read connection strings, and run SQL."
+  },
+  "icon": "icons/neon.png",
+  "tags": {
+    "zh": [
+      "数据库",
+      "Postgres",
+      "云服务"
+    ],
+    "en": [
+      "Database",
+      "Postgres",
+      "Cloud"
+    ]
+  },
   "version": "2.0.0",
   "mcp": {
     "url": "https://mcp.neon.tech/mcp",
     "transport": "http",
     "headers": {},
-    "authHint": "首次连接需在浏览器登录 Neon 并授权。"
+    "authHint": {
+      "zh": "首次连接需在浏览器登录 Neon 并授权。",
+      "en": "Sign in to Neon in the browser and authorize on first connect."
+    },
+    "auth": {
+      "type": "oauth"
+    }
   }
 }

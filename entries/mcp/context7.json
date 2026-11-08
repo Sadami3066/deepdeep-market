@@ -1,19 +1,40 @@
 {
   "type": "mcp",
   "id": "context7",
-  "name": "Context7",
-  "summary": "获取库与框架的最新文档和代码示例",
-  "description": "根据库名与版本检索最新文档，返回可直接使用的代码示例。\n公开服务，适合在写代码前确认 API 用法。",
+  "name": {
+    "zh": "Context7",
+    "en": "Context7"
+  },
+  "summary": {
+    "zh": "获取库与框架的最新文档和代码示例",
+    "en": "Up-to-date library docs and code examples"
+  },
+  "description": {
+    "zh": "根据库名与版本检索最新文档，返回可直接使用的代码示例。\n公开服务，适合在写代码前确认 API 用法。",
+    "en": "Look up current documentation by library and version, with examples you can use directly.\nPublic service, handy for confirming API usage before writing code."
+  },
   "icon": "icons/context7.png",
-  "tags": [
-    "文档",
-    "开发"
-  ],
+  "tags": {
+    "zh": [
+      "文档",
+      "开发"
+    ],
+    "en": [
+      "Documentation",
+      "Development"
+    ]
+  },
   "version": "4.5.1",
   "mcp": {
     "url": "https://mcp.context7.com/mcp",
     "transport": "http",
     "headers": {},
-    "authHint": "公开访问，无需授权。"
+    "authHint": {
+      "zh": "公开访问，无需授权。",
+      "en": "Public access; no authorization required."
+    },
+    "auth": {
+      "type": "none"
+    }
   }
 }

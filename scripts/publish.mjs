@@ -1,28 +1,29 @@
-import fs from 'node:fs'
-import path from 'node:path'
-import crypto from 'node:crypto'
+#!/usr/bin/env node
+import { createHash, createPublicKey } from 'node:crypto'
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const root = process.cwd()
-const entriesDir = path.join(root, 'entries')
-const types = ['plugin', 'skill', 'mcp']
+const root = fileURLToPath(new URL('..', import.meta.url))
 const entries = []
-for (const type of types) {
-  const dir = path.join(entriesDir, type)
-  if (!fs.existsSync(dir)) continue
-  for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.json')).sort()) {
-    const entry = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'))
-    if (entry.type !== type) throw new Error(`${file}: type mismatch`)
+
+for (const type of ['plugin', 'skill', 'mcp']) {
+  const dir = join(root, 'entries', type)
+  for (const file of readdirSync(dir).filter((name) => name.endsWith('.json')).sort()) {
+    const entry = JSON.parse(readFileSync(join(dir, file), 'utf8'))
+    if (entry.type !== type) throw new Error(`${type}/${file}: type 与目录不一致`)
     entries.push(entry)
   }
 }
-const publicKey = crypto.createPublicKey({ key: fs.readFileSync('keys/market-public.pem'), format: 'pem' })
-const der = publicKey.export({ type: 'spki', format: 'der' })
-const keyId = `ec256:${crypto.createHash('sha256').update(der).digest('hex').slice(0, 16)}`
+
+const spki = createPublicKey(readFileSync(join(root, 'keys/market-public.pem'))).export({ type: 'spki', format: 'der' })
+const keyId = `ec256:${createHash('sha256').update(spki).digest('hex').slice(0, 16)}`
 const registry = {
-  schemaVersion: 2,
+  schemaVersion: 3,
   generatedAt: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'),
   keyId,
   entries,
 }
-fs.writeFileSync('registry.json', JSON.stringify(registry, null, 2) + '\n')
-console.log(`wrote registry.json: ${entries.length} entries, keyId ${keyId}`)
+
+writeFileSync(join(root, 'registry.json'), `${JSON.stringify(registry, null, 2)}\n`)
+console.log(`registry.json: ${entries.length} entries, ${keyId}`)

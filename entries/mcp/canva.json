@@ -1,18 +1,40 @@
 {
   "type": "mcp",
   "id": "canva",
-  "name": "Canva",
-  "summary": "创建、搜索、编辑与导出设计",
-  "description": "在 Canva 中创建、搜索、编辑设计，并导出设计资源。\n适合生成海报、社媒图与演示文稿素材。",
-  "tags": [
-    "设计",
-    "图片"
-  ],
+  "name": {
+    "zh": "Canva",
+    "en": "Canva"
+  },
+  "summary": {
+    "zh": "创建、搜索、编辑与导出设计",
+    "en": "Create, search, edit, and export designs"
+  },
+  "description": {
+    "zh": "在 Canva 中创建、搜索、编辑设计，并导出设计资源。\n适合生成海报、社媒图与演示文稿素材。",
+    "en": "Create, search, and edit designs in Canva, then export the results.\nHandy for posters, social images, and presentation assets."
+  },
+  "icon": "icons/canva.png",
+  "tags": {
+    "zh": [
+      "设计",
+      "图片"
+    ],
+    "en": [
+      "Design",
+      "Images"
+    ]
+  },
   "version": "1.0.0",
   "mcp": {
     "url": "https://mcp.canva.com/mcp",
     "transport": "http",
     "headers": {},
-    "authHint": "首次连接需在浏览器登录 Canva 并授权。"
+    "authHint": {
+      "zh": "首次连接需在浏览器登录 Canva 并授权。",
+      "en": "Sign in to Canva in the browser and authorize on first connect."
+    },
+    "auth": {
+      "type": "oauth"
+    }
   }
 }

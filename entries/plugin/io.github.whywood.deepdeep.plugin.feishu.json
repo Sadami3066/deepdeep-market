@@ -1,18 +1,34 @@
 {
   "type": "plugin",
   "id": "io.github.whywood.deepdeep.plugin.feishu",
-  "name": "飞书",
-  "summary": "消息、日历、云文档与邮箱",
-  "description": "通过官方 lark-cli 读写飞书消息、日历、云文档、云空间、邮箱与任务。\n在插件页面安装 CLI、连接账号并管理应用权限。",
+  "name": {
+    "zh": "飞书",
+    "en": "Feishu"
+  },
+  "summary": {
+    "zh": "消息、日历、云文档与邮箱",
+    "en": "Messages, calendar, docs, and mail"
+  },
+  "description": {
+    "zh": "通过官方 lark-cli 读写飞书消息、日历、云文档、云空间、邮箱与任务。\n在插件页面安装 CLI、连接账号并管理应用权限。",
+    "en": "Read and send Feishu messages, manage calendar events, cloud docs, drive files, mail, and tasks through the official lark-cli.\nInstall the CLI and connect your account on the plugin page."
+  },
   "icon": "icons/feishu.png",
-  "tags": [
-    "飞书",
-    "办公",
-    "消息"
-  ],
+  "tags": {
+    "zh": [
+      "飞书",
+      "办公",
+      "消息"
+    ],
+    "en": [
+      "Feishu",
+      "Productivity",
+      "Messaging"
+    ]
+  },
   "version": "1.0.0",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/feishu-1.0.0.ddp",
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261108/feishu-1.0.0.ddp",
     "sha256": "e3f16022f9a6f2af812b0908932021166cf79f49d51332fa2ebd180014206650",
     "size": 929538
   },

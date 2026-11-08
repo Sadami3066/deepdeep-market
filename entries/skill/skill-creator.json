@@ -1,16 +1,31 @@
 {
   "type": "skill",
   "id": "skill-creator",
-  "name": "技能创建",
-  "summary": "创建与更新技能的规范与脚手架",
-  "description": "为 AI 编码助手创建高质量技能：结构、输出模式与工作流。\n侧重 Azure SDK 与 Microsoft Foundry 场景，含初始化、打包与校验脚本。",
-  "tags": [
-    "技能",
-    "开发"
-  ],
+  "name": {
+    "zh": "技能创建",
+    "en": "Skill Creator"
+  },
+  "summary": {
+    "zh": "创建与更新技能的规范与脚手架",
+    "en": "Patterns and scaffolding for creating skills"
+  },
+  "description": {
+    "zh": "为 AI 编码助手创建高质量技能：结构、输出模式与工作流。\n侧重 Azure SDK 与 Microsoft Foundry 场景，含初始化、打包与校验脚本。",
+    "en": "Create high-quality skills for AI coding agents: structure, output patterns, and workflows.\nFocused on Azure SDK and Microsoft Foundry scenarios, with init, package, and validation scripts."
+  },
+  "tags": {
+    "zh": [
+      "技能",
+      "开发"
+    ],
+    "en": [
+      "Skills",
+      "Development"
+    ]
+  },
   "version": "1.0.0",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/skill-creator-1.0.0.zip",
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/skills-20261108/skill-creator-1.0.0.zip",
     "sha256": "e00bde12ea883204f07170f17026ded7cd8c43f7c7b01bf5d48d00b37f27ceca",
     "size": 42680
   },

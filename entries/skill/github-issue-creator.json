@@ -1,16 +1,31 @@
 {
   "type": "skill",
   "id": "github-issue-creator",
-  "name": "GitHub Issue 整理",
-  "summary": "把零散信息整理成规范 issue",
-  "description": "把错误日志、语音记录或截图整理成结构清晰的 GitHub issue。\n支持附图与 GIF 作为证据，适合从非正式描述快速建单。",
-  "tags": [
-    "GitHub",
-    "协作"
-  ],
+  "name": {
+    "zh": "GitHub Issue 整理",
+    "en": "GitHub Issue Creator"
+  },
+  "summary": {
+    "zh": "把零散信息整理成规范 issue",
+    "en": "Turn scattered notes into a clean issue"
+  },
+  "description": {
+    "zh": "把错误日志、语音记录或截图整理成结构清晰的 GitHub issue。\n支持附图与 GIF 作为证据，适合从非正式描述快速建单。",
+    "en": "Turn error logs, voice notes, or screenshots into a well-structured GitHub issue.\nSupports images and GIFs as evidence, making it fast to file a clear issue."
+  },
+  "tags": {
+    "zh": [
+      "GitHub",
+      "协作"
+    ],
+    "en": [
+      "GitHub",
+      "Collaboration"
+    ]
+  },
   "version": "1.0.0",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/content-20261108/github-issue-creator-1.0.0.zip",
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/skills-20261108/github-issue-creator-1.0.0.zip",
     "sha256": "52ba6d4a41f0bf18c818b49954d81c88183ae504346f4855abae9aab179ce7c4",
     "size": 3114
   },

@@ -1,20 +1,26 @@
-import fs from 'node:fs'
-import crypto from 'node:crypto'
+#!/usr/bin/env node
+import { readFileSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { sign } from 'node:crypto'
 
+const root = fileURLToPath(new URL('..', import.meta.url))
 const args = process.argv.slice(2)
-const get = (name, fallback) => {
-  const i = args.indexOf(name)
-  return i >= 0 ? args[i + 1] : fallback
+const arg = (name) => {
+  const index = args.indexOf(name)
+  return index >= 0 ? args[index + 1] : undefined
 }
-const registry = get('--in', 'registry.json')
-const keyPath = get('--key', process.env.MARKET_SIGNING_KEY)
-const out = get('--out', `${registry}.sig`)
-if (!keyPath) {
-  console.error('missing --key (or MARKET_SIGNING_KEY)')
-  process.exit(1)
-}
-const data = fs.readFileSync(registry)
-const privateKey = crypto.createPrivateKey({ key: fs.readFileSync(keyPath), format: 'pem' })
-const signature = crypto.sign('sha256', data, privateKey)
-fs.writeFileSync(out, signature.toString('base64'))
-console.log(`signed ${registry} -> ${out} (${signature.length} bytes)`)
+
+const inputPath = arg('--in') ?? join(root, 'registry.json')
+const outputPath = arg('--out') ?? join(root, 'registry.json.sig')
+const keyFile = arg('--key')
+const keyEnv = arg('--key-env')
+
+let key = keyFile ? readFileSync(keyFile, 'utf8') : undefined
+if (!key && keyEnv) key = process.env[keyEnv]
+if (!key && process.env.MARKET_SIGNING_KEY) key = process.env.MARKET_SIGNING_KEY
+if (!key) throw new Error('缺少签名私钥：用 --key <文件> 或 --key-env <环境变量名>')
+
+const signature = sign('sha256', readFileSync(inputPath), key)
+writeFileSync(outputPath, signature.toString('base64'))
+console.log(`signed ${inputPath} -> ${outputPath}`)

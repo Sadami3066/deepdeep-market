@@ -1,20 +1,42 @@
 {
   "type": "mcp",
   "id": "linear",
-  "name": "Linear",
-  "summary": "查询与管理 Linear 项目、issue 与文档",
-  "description": "在 Linear 工作区中查找 issue、项目和文档，也能创建与更新条目。\n适合开发团队在对话里跟进任务进度。",
+  "name": {
+    "zh": "Linear",
+    "en": "Linear"
+  },
+  "summary": {
+    "zh": "查询与管理 Linear 项目、issue 与文档",
+    "en": "Find and manage Linear issues, projects, and docs"
+  },
+  "description": {
+    "zh": "在 Linear 工作区中查找 issue、项目和文档，也能创建与更新条目。\n适合开发团队在对话里跟进任务进度。",
+    "en": "Look up issues, projects, and documents in your Linear workspace, and create or update them.\nA good fit for development teams tracking work in the conversation."
+  },
   "icon": "icons/linear.png",
-  "tags": [
-    "项目管理",
-    "开发",
-    "协作"
-  ],
+  "tags": {
+    "zh": [
+      "项目管理",
+      "开发",
+      "协作"
+    ],
+    "en": [
+      "Project Management",
+      "Development",
+      "Collaboration"
+    ]
+  },
   "version": "1.0.2",
   "mcp": {
     "url": "https://mcp.linear.app/mcp",
     "transport": "http",
     "headers": {},
-    "authHint": "首次连接需在浏览器登录 Linear 并授权。"
+    "authHint": {
+      "zh": "首次连接需在浏览器登录 Linear 并授权。",
+      "en": "Sign in to Linear in the browser and authorize on first connect."
+    },
+    "auth": {
+      "type": "oauth"
+    }
   }
 }
