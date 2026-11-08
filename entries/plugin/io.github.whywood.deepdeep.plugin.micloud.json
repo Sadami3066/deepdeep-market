@@ -29,8 +29,8 @@
   "version": "1.0.1",
   "artifact": {
     "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261108/micloud-1.0.1.ddp",
-    "sha256": "028befb03cbe1d99f6b8dd7052b06f3dd09ae5eab39d519267450a261e6cd136",
-    "size": 929225
+    "sha256": "f34ee91f376e3f9b5607a81cbf4aa73709509cf8a9107c0fa77d6e29a737891e",
+    "size": 929100
   },
   "plugin": {
     "apiLevel": 4,
