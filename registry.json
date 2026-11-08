@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-11-08T05:16:38Z",
+  "generatedAt": "2026-11-08T13:45:10Z",
   "keyId": "ec256:db63256431bd66db",
   "entries": [
     {
@@ -34,8 +34,8 @@
       "version": "1.0.0",
       "artifact": {
         "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261108/feishu-1.0.0.ddp",
-        "sha256": "e3f16022f9a6f2af812b0908932021166cf79f49d51332fa2ebd180014206650",
-        "size": 929538
+        "sha256": "ca9b6ed91c2dcb7c9b766c1586e29f6f0731560fbbb7a618c06e6183144e4e73",
+        "size": 929043
       },
       "plugin": {
         "apiLevel": 4,
@@ -55,7 +55,7 @@
         "en": "Timetable, grades, exams, notices, and leave requests"
       },
       "description": {
-        "zh": "在 Linux 运行环境里使用 Node.js 版教务 CLI，查询课表、成绩、学分、考试、公告、空闲教室与请假记录。\n账号密码与登录都在插件页完成，首次使用会自动安装 CLI。",
+        "zh": "查询课表、成绩、学分、考试、公告、空闲教室与请假记录；账号密码只在插件页使用",
         "en": "Query timetable, grades, credits, exams, notices, free classrooms, and leave records with the Node.js academic affairs CLI inside the Linux runtime.\nSign-in and credentials are handled on the plugin page, and the CLI installs automatically on first use."
       },
       "icon": "icons/jwxt.png",
@@ -74,8 +74,8 @@
       "version": "1.0.0",
       "artifact": {
         "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261108/jwxt-1.0.0.ddp",
-        "sha256": "21d488e2284de6b9f9154c8cc8ef1b80f0ea4128beee37f53ca5084b42c4287d",
-        "size": 897325
+        "sha256": "3269fc79829ac0ebd5c498decf72066357051e16dbafc104278f059c24138a30",
+        "size": 896743
       },
       "plugin": {
         "apiLevel": 4,
@@ -114,8 +114,8 @@
       "version": "1.0.1",
       "artifact": {
         "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261108/micloud-1.0.1.ddp",
-        "sha256": "e091a1fcf78683c8c1f494eede7a0946801649df74b061960d07057f82772012",
-        "size": 929123
+        "sha256": "f34ee91f376e3f9b5607a81cbf4aa73709509cf8a9107c0fa77d6e29a737891e",
+        "size": 929100
       },
       "plugin": {
         "apiLevel": 4,
@@ -154,8 +154,8 @@
       "version": "1.0.0",
       "artifact": {
         "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261108/wecom-1.0.0.ddp",
-        "sha256": "5cde582f3420c79624aa72128303326e485942e8ed964d4a2ddd1d95f15fed9e",
-        "size": 965175
+        "sha256": "e260464515d7341a022d9c29836db761520ba94621b4d5c321f413e130d982da",
+        "size": 964792
       },
       "plugin": {
         "apiLevel": 4,
