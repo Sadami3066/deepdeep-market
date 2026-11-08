@@ -29,8 +29,8 @@
   "version": "1.0.0",
   "artifact": {
     "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261108/wecom-1.0.0.ddp",
-    "sha256": "5cde582f3420c79624aa72128303326e485942e8ed964d4a2ddd1d95f15fed9e",
-    "size": 965175
+    "sha256": "48218b232db9e0f56daa74912f8b7b60726805f6a82776df9d2857098d046aaa",
+    "size": 964939
   },
   "plugin": {
     "apiLevel": 4,

@@ -29,8 +29,8 @@
   "version": "1.0.0",
   "artifact": {
     "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261108/jwxt-1.0.0.ddp",
-    "sha256": "21d488e2284de6b9f9154c8cc8ef1b80f0ea4128beee37f53ca5084b42c4287d",
-    "size": 897325
+    "sha256": "3269fc79829ac0ebd5c498decf72066357051e16dbafc104278f059c24138a30",
+    "size": 896743
   },
   "plugin": {
     "apiLevel": 4,

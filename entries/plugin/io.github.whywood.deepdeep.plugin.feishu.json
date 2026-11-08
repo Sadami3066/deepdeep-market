@@ -29,8 +29,8 @@
   "version": "1.0.0",
   "artifact": {
     "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261108/feishu-1.0.0.ddp",
-    "sha256": "e3f16022f9a6f2af812b0908932021166cf79f49d51332fa2ebd180014206650",
-    "size": 929538
+    "sha256": "ca9b6ed91c2dcb7c9b766c1586e29f6f0731560fbbb7a618c06e6183144e4e73",
+    "size": 929043
   },
   "plugin": {
     "apiLevel": 4,
