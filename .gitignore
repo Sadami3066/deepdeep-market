@@ -1,3 +1,4 @@
-keys/
+keys/*
+!keys/market-public.pem
 node_modules/
 *.log
