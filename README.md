@@ -19,7 +19,7 @@ DeepDeep 的技能、插件与远程 MCP 配置市场。客户端固定读取：
 ## 索引格式（schema v3）
 
 - `schemaVersion` 固定为 `3`；`keyId` 由签名公钥计算出，`generatedAt` 由脚本写入。
-- 插件条目：`artifact` + `plugin.apiLevel`/`plugin.minHostVersion`/`plugin.publisherKeyId`。
+- 插件条目：`artifact` + `plugin.apiLevel`/`plugin.minHostVersion`/`plugin.publisherKeyId`；可选 `plugin.publisherName` 为发布者展示名（客户端优先显示，缺失时回落 `publisherKeyId` 前 12 位，发布者身份仍以 `publisherKeyId` 为准）。
 - 技能条目：`artifact` + `skill.license`/`skill.source`。
 - MCP 条目：无制品；`mcp.url` 必须是公开远程 HTTP 端点，`mcp.auth` 描述授权方式：
   - `{"type": "none"}`：公开访问。
