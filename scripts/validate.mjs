@@ -79,6 +79,7 @@ try {
   registry = JSON.parse(readFileSync(inputPath, 'utf8'))
 } catch (error) {
   console.error(`FAIL: 无法读取 ${inputPath}: ${error.message}`)
+  if (!arg('--in')) console.error('先运行 node scripts/publish.mjs 生成 registry.json')
   process.exit(1)
 }
 
@@ -172,28 +173,54 @@ if (!noSignature) {
   }
 }
 
-const isNetworkFailure = (error) => {
-  const message = String(error?.message ?? '')
-  return /^HTTP \d+$/.test(message) || /fetch failed|network|timeout|timed out|aborted|ENOTFOUND|EAI_AGAIN|ECONN|ETIMEDOUT|socket/i.test(message)
+const transientHttpStatus = new Set([408, 425, 429])
+const isTransientHttpStatus = (status) => status >= 500 || transientHttpStatus.has(status)
+
+const isNetworkError = (error) => {
+  const code = String(error?.cause?.code ?? error?.code ?? '')
+  if (/^(ENOTFOUND|EAI_AGAIN|ECONNRESET|ECONNREFUSED|ECONNABORTED|EPIPE|ETIMEDOUT|UND_ERR_CONNECT_TIMEOUT|UND_ERR_SOCKET|UND_ERR_HEADERS_TIMEOUT)$/.test(code)) return true
+  return /fetch failed|network|timeout|timed out|aborted|ENOTFOUND|EAI_AGAIN|ECONN|ETIMEDOUT|socket/i.test(String(error?.message ?? ''))
+}
+
+const classifyFailure = (error) => {
+  if (Number.isInteger(error?.httpStatus)) return isTransientHttpStatus(error.httpStatus) ? 'transient' : 'permanent'
+  if (error?.verification) return 'verification'
+  if (isNetworkError(error)) return 'transient'
+  return 'permanent'
 }
 
 const checkArtifact = async (artifact) => {
   let lastError
+  let failure = 'transient'
   for (let attempt = 1; attempt <= 5; attempt++) {
     try {
       const response = await fetch(artifact.url, { redirect: 'follow', signal: AbortSignal.timeout(180000) })
-      if (response.status !== 200) throw new Error(`HTTP ${response.status}`)
+      if (response.status !== 200) {
+        const error = new Error(`HTTP ${response.status}`)
+        error.httpStatus = response.status
+        throw error
+      }
       const buffer = Buffer.from(await response.arrayBuffer())
-      if (buffer.length !== artifact.size) throw new Error(`size ${buffer.length} != ${artifact.size}`)
+      if (buffer.length !== artifact.size) {
+        const error = new Error(`size ${buffer.length} != ${artifact.size}`)
+        error.verification = true
+        throw error
+      }
       const sha256 = createHash('sha256').update(buffer).digest('hex')
-      if (sha256 !== artifact.sha256) throw new Error(`sha256 ${sha256} != ${artifact.sha256}`)
+      if (sha256 !== artifact.sha256) {
+        const error = new Error(`sha256 ${sha256} != ${artifact.sha256}`)
+        error.verification = true
+        throw error
+      }
       return `${artifact.id}: ${artifact.size} bytes`
     } catch (error) {
       lastError = error
-      if (attempt < 5) await new Promise((resolve) => setTimeout(resolve, 3000 * attempt))
+      failure = classifyFailure(error)
+      if (failure === 'permanent' || attempt === 5) break
+      await new Promise((resolve) => setTimeout(resolve, 3000 * attempt))
     }
   }
-  if (tolerateNetwork && isNetworkFailure(lastError)) return `WARN ${artifact.id}: ${lastError?.message}`
+  if (tolerateNetwork && failure === 'transient') return `WARN ${artifact.id}: ${lastError?.message}`
   return `FAILED ${artifact.id}: ${lastError?.message}`
 }
 

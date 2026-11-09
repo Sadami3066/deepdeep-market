@@ -2,3 +2,5 @@ keys/*
 !keys/market-public.pem
 node_modules/
 *.log
+registry.json
+registry.json.sig

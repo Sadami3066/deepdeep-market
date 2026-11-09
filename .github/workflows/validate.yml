@@ -16,6 +16,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Build registry from entries
+        run: node scripts/publish.mjs
       - name: Validate schema
         run: node scripts/validate.mjs --schema-only
       - name: Comment on failure

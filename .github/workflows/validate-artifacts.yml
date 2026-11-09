@@ -16,5 +16,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Validate entries and release artifacts
+      - name: Build registry from entries
+        run: node scripts/publish.mjs
+      - name: Validate generated registry and release artifacts
         run: node scripts/validate.mjs --no-sig
