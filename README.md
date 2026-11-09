@@ -59,3 +59,4 @@ node scripts/validate.mjs --pub keys/market-public.pem
 - 只接受能公开再分发的技能/插件/MCP 配置，必须写清来源与 license。
 - 新增条目请按 `entries/sample.json` 的格式提交，并附上 sha256。
 - PR 会自动跑 `node scripts/validate.mjs --schema-only`；人工审核清单见 `PR_REVIEW.md`，审核通过后由维护者发布。
+- 上架内容边界、禁止项、签名与下架规则见 [Market Policy](https://github.com/Sadami3066/DeepDeep-Plugins/blob/master/MARKET_POLICY.md)。
