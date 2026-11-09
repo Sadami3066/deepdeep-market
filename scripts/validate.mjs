@@ -147,6 +147,13 @@ for (const [index, entry] of entries.entries()) {
     if (!isObject(entry.plugin) || typeof entry.plugin.publisherKeyId !== 'string' || !entry.plugin.publisherKeyId) {
       fail(`${id}: plugin.publisherKeyId 缺失`)
     }
+    if (entry.plugin?.previews !== undefined) {
+      if (!Array.isArray(entry.plugin.previews) || entry.plugin.previews.length === 0 || entry.plugin.previews.length > 6) {
+        fail(`${id}: plugin.previews 必须是非空数组且最多 6 项`)
+      } else if (entry.plugin.previews.some((url) => !isUrl(url))) {
+        fail(`${id}: plugin.previews 每项必须是 https URL`)
+      }
+    }
   } else {
     if (!isObject(entry.skill) || typeof entry.skill.license !== 'string' || !entry.skill.license.trim()) fail(`${id}: skill.license 缺失`)
     if (!isObject(entry.skill) || !isUrl(entry.skill.source)) fail(`${id}: skill.source 必须是 https URL`)
