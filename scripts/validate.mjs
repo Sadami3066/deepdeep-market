@@ -173,7 +173,7 @@ if (!noSignature) {
 
 const checkArtifact = async (artifact) => {
   let lastError
-  for (let attempt = 1; attempt <= 3; attempt++) {
+  for (let attempt = 1; attempt <= 5; attempt++) {
     try {
       const response = await fetch(artifact.url, { redirect: 'follow', signal: AbortSignal.timeout(180000) })
       if (response.status !== 200) throw new Error(`HTTP ${response.status}`)
@@ -184,7 +184,7 @@ const checkArtifact = async (artifact) => {
       return `${artifact.id}: ${artifact.size} bytes`
     } catch (error) {
       lastError = error
-      if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, 2000 * attempt))
+      if (attempt < 5) await new Promise((resolve) => setTimeout(resolve, 3000 * attempt))
     }
   }
   return `FAILED ${artifact.id}: ${lastError?.message}`

@@ -28,7 +28,13 @@ jobs:
       - name: Build registry
         run: node scripts/publish.mjs
       - name: Validate entries and artifacts
-        run: node scripts/validate.mjs --no-sig
+        run: |
+          for i in 1 2 3 4; do
+            if node scripts/validate.mjs --no-sig; then exit 0; fi
+            echo "validate attempt $i failed; retrying in $((i*15))s"
+            sleep $((i*15))
+          done
+          exit 1
       - name: Sign registry
         env:
           MARKET_PRIVATE_KEY: ${{ secrets.MARKET_PRIVATE_KEY }}
