@@ -27,8 +27,8 @@ jobs:
           node-version: 22
       - name: Build registry
         run: node scripts/publish.mjs
-      - name: Validate entries (schema)
-        run: node scripts/validate.mjs --schema-only
+      - name: Validate entries and artifacts
+        run: node scripts/validate.mjs --no-sig --tolerate-network
       - name: Sign registry
         env:
           MARKET_PRIVATE_KEY: ${{ secrets.MARKET_PRIVATE_KEY }}

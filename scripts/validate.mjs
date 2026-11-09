@@ -14,6 +14,7 @@ const arg = (name) => {
 const schemaOnly = args.includes('--schema-only')
 const noSignature = schemaOnly || args.includes('--no-sig')
 const skipArtifacts = schemaOnly || args.includes('--skip-artifacts')
+const tolerateNetwork = args.includes('--tolerate-network')
 const inputPath = arg('--in') ?? join(root, 'registry.json')
 const signaturePath = arg('--sig') ?? join(root, 'registry.json.sig')
 const publicKeyPath = arg('--pub') ?? join(root, 'keys/market-public.pem')
@@ -171,6 +172,11 @@ if (!noSignature) {
   }
 }
 
+const isNetworkFailure = (error) => {
+  const message = String(error?.message ?? '')
+  return /^HTTP \d+$/.test(message) || /fetch failed|network|timeout|timed out|aborted|ENOTFOUND|EAI_AGAIN|ECONN|ETIMEDOUT|socket/i.test(message)
+}
+
 const checkArtifact = async (artifact) => {
   let lastError
   for (let attempt = 1; attempt <= 5; attempt++) {
@@ -187,13 +193,15 @@ const checkArtifact = async (artifact) => {
       if (attempt < 5) await new Promise((resolve) => setTimeout(resolve, 3000 * attempt))
     }
   }
+  if (tolerateNetwork && isNetworkFailure(lastError)) return `WARN ${artifact.id}: ${lastError?.message}`
   return `FAILED ${artifact.id}: ${lastError?.message}`
 }
 
 if (!skipArtifacts) {
   for (const artifact of artifacts) {
     const result = await checkArtifact(artifact)
-    if (result.startsWith('FAILED')) fail(result.slice(7))
+    if (result.startsWith('WARN')) console.warn(`artifact warned ${result.slice(5)}`)
+    else if (result.startsWith('FAILED')) fail(result.slice(7))
     else console.log(`artifact ok ${result}`)
   }
 }
