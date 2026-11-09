@@ -1,0 +1,20 @@
+name: Validate artifacts
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 18 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate entries and release artifacts
+        run: node scripts/validate.mjs --no-sig
