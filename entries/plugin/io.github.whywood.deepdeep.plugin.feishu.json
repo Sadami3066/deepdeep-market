@@ -26,16 +26,17 @@
       "Messaging"
     ]
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261109/feishu-1.0.1.ddp",
-    "sha256": "82dd97b50eb5e458eda5585488feeb9528d6da434155e98e89a8763ea2b197df",
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261110/feishu-1.0.2.ddp",
+    "sha256": "59e644f98893ebd252dab606954c5c3688077848f727ba2da055880277164c07",
     "size": 929064
   },
   "plugin": {
-    "apiLevel": 4,
+    "apiLevel": 5,
     "minHostVersion": "0.2.0",
     "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2",
-    "publisherName": "milous"
+    "publisherName": "milous",
+    "version": "1.0.2"
   }
 }
