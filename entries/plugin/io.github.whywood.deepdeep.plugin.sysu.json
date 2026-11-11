@@ -37,6 +37,7 @@
     "minHostVersion": "0.2.0",
     "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2",
     "publisherName": "milous",
+    "requiredAccess": "normal",
     "previews": [
       "https://raw.githubusercontent.com/Sadami3066/deepdeep-market/master/previews/sysu-1.jpg",
       "https://raw.githubusercontent.com/Sadami3066/deepdeep-market/master/previews/sysu-2.jpg"

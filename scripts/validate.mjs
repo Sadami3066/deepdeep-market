@@ -149,6 +149,9 @@ for (const [index, entry] of entries.entries()) {
     if (!isObject(entry.plugin) || typeof entry.plugin.publisherKeyId !== 'string' || !entry.plugin.publisherKeyId) {
       fail(`${id}: plugin.publisherKeyId 缺失`)
     }
+    if (entry.plugin?.requiredAccess !== undefined && !['normal', 'adb', 'root'].includes(entry.plugin.requiredAccess)) {
+      fail(`${id}: plugin.requiredAccess 必须是 normal/adb/root`)
+    }
     if (entry.plugin?.previews !== undefined) {
       if (!Array.isArray(entry.plugin.previews) || entry.plugin.previews.length === 0 || entry.plugin.previews.length > 6) {
         fail(`${id}: plugin.previews 必须是非空数组且最多 6 项`)

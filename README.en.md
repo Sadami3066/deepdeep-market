@@ -60,6 +60,7 @@ Common entry fields (enforced by `scripts/validate.mjs`):
 - `plugin.publisherKeyId` (required): publisher key ID; the App uses it to verify the Ed25519 signature inside the `.ddp` on install;
 - `plugin.publisherName` (optional): display name; the client prefers it and falls back to the first 12 characters of `publisherKeyId`;
 - `plugin.apiLevel` / `plugin.minHostVersion`: client compatibility hints (not enforced by the validation script today);
+- `plugin.requiredAccess` (optional): the system access tier the plugin needs — `normal` (default), `adb`, or `root`; the App warns when the current access is lower, so declare it truthfully;
 - `plugin.previews` (optional): 1–6 HTTPS image URLs; the App shows them as portrait 9:20 cards (1080×2400 or 720×1600 recommended), tap to view full-screen with horizontal paging.
 
 **Skill entries**
