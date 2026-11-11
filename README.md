@@ -60,7 +60,7 @@ DeepDeep App 的市场页固定读取上面的索引，用内置公钥验证签�
 - `plugin.publisherKeyId`（必填）：发布者公钥 ID；App 安装时会用它校验 `.ddp` 内的 Ed25519 签名；
 - `plugin.publisherName`（可选）：发布者展示名，客户端优先显示，缺失时回落 `publisherKeyId` 前 12 位；
 - `plugin.apiLevel` / `plugin.minHostVersion`：客户端兼容性信息（当前校验脚本不强制）；
-- `plugin.requiredAccess`（可选）：插件运行需要的系统访问档位，`normal`（默认）/ `adb` / `root`；客户端按当前启用权限提示「未必能用」，请如实标注、不要虚标；
+- `plugin.requiredAccess`（可选）：插件运行需要的系统访问档位，`normal`（默认）/ `adb` / `root`；客户端会在当前启用权限低于要求时标注「部分功能可能不可用」，请如实标注、不要虚标；
 - `plugin.previews`（可选）：1–6 个 https 图片 URL；App 按竖版 9:20 卡片展示（建议 1080×2400 或 720×1600），点开可全屏左右滑动。
 
 **技能条目**
