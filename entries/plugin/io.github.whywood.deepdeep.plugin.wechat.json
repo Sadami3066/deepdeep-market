@@ -13,7 +13,7 @@
     "zh": "在 Linux 运行环境里同步、解密微信本地数据库，按日期范围导出完整聊天记录。CLI 只做数据清洗和导出，不做筛选或摘要；需要把系统访问切到 Root。",
     "en": "Sync and decrypt the local WeChat database inside the Linux runtime, then export complete chat records for a date range. The CLI only formats and exports; set system access to Root."
   },
-  "icon": "icons/wechat.png",
+  "icon": "icons/wechat-chat.png",
   "tags": {
     "zh": [
       "微信",
