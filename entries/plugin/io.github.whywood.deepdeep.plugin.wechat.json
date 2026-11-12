@@ -1,0 +1,43 @@
+{
+  "type": "plugin",
+  "id": "io.github.whywood.deepdeep.plugin.wechat",
+  "name": {
+    "zh": "微信导出",
+    "en": "WeChat Export"
+  },
+  "summary": {
+    "zh": "按日期范围导出完整微信记录",
+    "en": "Export complete WeChat records for a date range"
+  },
+  "description": {
+    "zh": "在 Linux 运行环境里同步、解密微信本地数据库，按日期范围导出完整聊天记录。CLI 只做数据清洗和导出，不做筛选或摘要；需要把系统访问切到 Root。",
+    "en": "Sync and decrypt the local WeChat database inside the Linux runtime, then export complete chat records for a date range. The CLI only formats and exports; set system access to Root."
+  },
+  "icon": "icons/wechat.png",
+  "tags": {
+    "zh": [
+      "微信",
+      "导出",
+      "聊天记录"
+    ],
+    "en": [
+      "WeChat",
+      "Export",
+      "Chat history"
+    ]
+  },
+  "version": "0.2.2",
+  "artifact": {
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261112/wechat-0.2.2.ddp",
+    "sha256": "3b079a26db896f21d3408918a7380d194c5ec47f1f63b0b20b20824d92f53aa1",
+    "size": 868072
+  },
+  "plugin": {
+    "apiLevel": 5,
+    "minHostVersion": "1.0.1",
+    "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2",
+    "publisherName": "milous",
+    "requiredAccess": "root",
+    "version": "0.2.2"
+  }
+}

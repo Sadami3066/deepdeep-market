@@ -26,18 +26,18 @@
       "Photos"
     ]
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261110/micloud-1.0.3.ddp",
-    "sha256": "d04daa3ed8336422b78c46beda6ec8cd8678a9cf10b1e72695f56d239a2286f3",
-    "size": 929116
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261112/micloud-1.0.4.ddp",
+    "sha256": "d99cea18838d50c4234e9293ee839972c76c804fe56370e940e7aa938e02680d",
+    "size": 929115
   },
   "plugin": {
     "apiLevel": 5,
-    "minHostVersion": "0.2.0",
+    "minHostVersion": "1.0.1",
     "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2",
     "publisherName": "milous",
     "requiredAccess": "normal",
-    "version": "1.0.3"
+    "version": "1.0.4"
   }
 }
