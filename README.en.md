@@ -26,7 +26,7 @@ The registry only carries metadata plus `sha256`/`size`; artifacts live in type-
 | `icons/` | Entry icons, `icons/<name>.png`, ≤128KB; deployed via Pages |
 | `previews/` | Plugin preview images; entries reference them with `raw.githubusercontent.com` URLs, and Pages does not publish this directory |
 | `scripts/` | `publish.mjs` builds the registry, `validate.mjs` validates registry/signature/artifacts, `sign.mjs` signs the registry |
-| `.github/workflows/` | `release.yml` validates and deploys Pages, `validate.yml` validates PRs, `validate-artifacts.yml` validates artifacts daily |
+| `.github/workflows/` | `release.yml` validates, signs, deploys Pages, and re-reads the deployed registry for verification, `validate.yml` validates PRs, `validate-artifacts.yml` validates artifacts daily |
 | `keys/market-public.pem` | Registry verification public key; private keys never enter the repo (`keys/*` is ignored, only this public key is kept) |
 | `PR_REVIEW.md` | Manual entry review checklist |
 
@@ -57,11 +57,12 @@ Common entry fields (enforced by `scripts/validate.mjs`):
 **Plugin entries**
 
 - `artifact`: `{"url": "https://…", "sha256": "<64 lowercase hex>", "size": <bytes>}`, ≤50MB;
-- `plugin.publisherKeyId` (required): publisher key ID; the App uses it to verify the Ed25519 signature inside the `.ddp` on install;
+- `plugin.publisherKeyId` (required): publisher key ID in `ed25519:<64 lowercase hex>` form; the App uses it to verify the Ed25519 signature inside the `.ddp` on install;
 - `plugin.publisherName` (optional): display name; the client prefers it and falls back to the first 12 characters of `publisherKeyId`;
-- `plugin.apiLevel` / `plugin.minHostVersion`: client compatibility hints (not enforced by the validation script today);
+- `plugin.apiLevel` / `plugin.minHostVersion`: client compatibility fields; the validation script enforces `apiLevel = 6` and `minHostVersion >= 1.0.4`, and the client refuses installs that do not match;
 - `plugin.requiredAccess` (optional): the system access tier the plugin needs — `normal` (default), `adb`, or `root`; the App warns when the current access is lower, so declare it truthfully;
 - `plugin.previews` (optional): 1–6 HTTPS image URLs; the App shows them as portrait 9:20 cards (1080×2400 or 720×1600 recommended), tap to view full-screen with horizontal paging.
+- `plugin.version`: must match the entry `version` and the version in the Release asset name; plugins must target API level 6 (host 1.0.4+), and level 5 plugins are no longer accepted.
 
 **Skill entries**
 
@@ -97,7 +98,7 @@ Place entries under `entries/<type>/`: plugins in `entries/plugin/`, skills in `
 
 ### 2. Package the artifact and upload a Release
 
-- Plugins: Release tag `plugins-YYYYMMDD`, asset name `<last id segment>-<version>.ddp` (e.g. `sysu-1.2.2.ddp`);
+- Plugins: Release tag `plugins-YYYYMMDD` (add a suffix for a second release on the same day, e.g. `plugins-20261112-2`), asset name `<last id segment>-<version>.ddp` (e.g. `sysu-2.0.0.ddp`);
 - Skills: Release tag `skills-YYYYMMDD`, asset name `<id>-<version>.zip`; the zip must contain a single skill directory (with `SKILL.md`, plus the upstream `LICENSE` and attribution notes such as `ATTRIBUTION.md`);
 - MCP: no artifact and no Release.
 
@@ -142,7 +143,8 @@ Keep the private key local or in a CI secret; never commit it.
 2. `node scripts/validate.mjs --no-sig --tolerate-network` — validate the registry and download all artifacts to verify `size`/`sha256`;
 3. `node scripts/sign.mjs --key-env MARKET_PRIVATE_KEY` — sign with the repository secret;
 4. `node scripts/validate.mjs --pub keys/market-public.pem --skip-artifacts` — verify the signature;
-5. Deploy `registry.json`, `registry.json.sig`, and `icons/` to GitHub Pages.
+5. Deploy `registry.json`, `registry.json.sig`, and `icons/` to GitHub Pages;
+6. re-read `registry.json` / `registry.json.sig` from Pages, compare them byte-for-byte with the generated files, and verify the signature (waiting up to 5 minutes for propagation); any mismatch fails the workflow.
 
 `validate-artifacts.yml` runs daily at 18:30 UTC (02:30 Beijing time) and rebuilds the registry from `master` to strictly validate every artifact; failures show up as failed Actions runs. Scheduled GitHub Actions runs may be delayed.
 
@@ -160,12 +162,15 @@ Keep the private key local or in a CI secret; never commit it.
 
 Artifact validation downloads each `artifact.url` and compares `size` and `sha256`. HTTP 4xx (404/403/410, etc.) is a permanent error and fails immediately; HTTP 5xx, 408, 425, 429, and network errors (DNS, connection, timeout) get up to 5 attempts (180-second timeout per request) and, with `--tolerate-network`, end as warnings. A `size`/`sha256` mismatch always fails.
 
+Plugin entries additionally require `plugin.apiLevel = 6`, `plugin.minHostVersion >= 1.0.4`, a valid `plugin.publisherKeyId` format, and `plugin.version` matching `version`.
+
 ## Usage
 
 The App's Market tab loads the registry from the fixed URL:
 
 - it verifies `registry.json.sig` with the built-in public key and requires `keyId` to match, then lists plugins, skills, and MCP;
 - the registry is cached for 6 hours; if a refresh fails, the last cache is used;
+- the client disables installation and asks the user to upgrade the host when the host version is below an entry's `minHostVersion` or the entry's `apiLevel` is unsupported;
 - installed plugins and skills download and install updates automatically, retrying each entry at most every 5 minutes;
 - MCP entries connect after you authorize or enter credentials in the App (remote HTTP only, no local commands).
 
@@ -175,7 +180,7 @@ To install a plugin manually, download the `.ddp` from its Release and use "Impo
 
 - **Third-party artifacts**: this repository distributes only the registry and hashes; plugin and skill contents come from their authors. On install, the App verifies the Ed25519 publisher signature inside the package against `publisherKeyId` in the registry. The safety of skills and MCP depends on their upstream sources and authors.
 - **Mutable artifacts**: GitHub Release assets can be overwritten or deleted under the same name. After the registry is published, an artifact may still disappear or change; the App verifies `size`/`sha256` and refuses mismatched downloads, but the registry can still advertise an update. Before publishing, make sure the `artifact` target exists and will not change.
-- **Deployment tolerance**: `release.yml` uses `--tolerate-network`; if an artifact still returns 5xx/429/network errors after retries, deployment continues with a warning. The daily `validate-artifacts.yml` run is the strict backstop. HTTP 4xx aborts the release immediately.
+- **Deployment tolerance**: `release.yml` uses `--tolerate-network`; if an artifact still returns 5xx/429/network errors after retries, deployment continues with a warning. The daily `validate-artifacts.yml` run is the strict backstop. HTTP 4xx aborts the release immediately; a failed post-deploy re-read also fails the release workflow.
 - **MCP**: third-party MCP services are governed by their own terms and privacy policies. API keys and OAuth credentials are stored by the App and sent only to that service; the market only accepts public remote HTTP endpoints.
 - **Icons and previews**: `icons/` is deployed through Pages; `previews/` is served via `raw.githubusercontent.com`, so availability and content depend on the Git host.
 

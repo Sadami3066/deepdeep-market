@@ -19,11 +19,28 @@ const inputPath = arg('--in') ?? join(root, 'registry.json')
 const signaturePath = arg('--sig') ?? join(root, 'registry.json.sig')
 const publicKeyPath = arg('--pub') ?? join(root, 'keys/market-public.pem')
 
+const PLUGIN_API_LEVEL = 6
+const MIN_HOST_VERSION = '1.0.4'
+
 const errors = []
 const fail = (message) => errors.push(message)
 const isObject = (value) => value !== null && typeof value === 'object' && !Array.isArray(value)
 const isUrl = (value) => typeof value === 'string' && /^https:\/\/[^/\s]+/.test(value)
 const isSha256 = (value) => typeof value === 'string' && /^[0-9a-f]{64}$/.test(value)
+const isPublisherKeyId = (value) => typeof value === 'string' && /^ed25519:[0-9a-f]{64}$/.test(value)
+const parseCoreVersion = (value) => {
+  const match = /^(\d+)\.(\d+)\.(\d+)(?:[-+].*)?$/.exec(typeof value === 'string' ? value : '')
+  return match ? [Number(match[1]), Number(match[2]), Number(match[3])] : null
+}
+const isVersionAtLeast = (value, minimum) => {
+  const current = parseCoreVersion(value)
+  if (!current) return false
+  const target = parseCoreVersion(minimum)
+  for (let index = 0; index < 3; index++) {
+    if (current[index] !== target[index]) return current[index] > target[index]
+  }
+  return true
+}
 
 const checkLocalized = (value, field, id) => {
   if (!isObject(value)) {
@@ -146,13 +163,22 @@ for (const [index, entry] of entries.entries()) {
   if (!Number.isInteger(entry.artifact.size) || entry.artifact.size <= 0) fail(`${id}: artifact.size 必须是正整数`)
   else if (entry.artifact.size > limit) fail(`${id}: artifact 超过 ${limit / 1024 / 1024}MB`)
   if (entry.type === 'plugin') {
-    if (!isObject(entry.plugin) || typeof entry.plugin.publisherKeyId !== 'string' || !entry.plugin.publisherKeyId) {
-      fail(`${id}: plugin.publisherKeyId 缺失`)
+    if (!isObject(entry.plugin)) {
+      fail(`${id}: plugin 缺失`)
+      continue
     }
-    if (entry.plugin?.requiredAccess !== undefined && !['normal', 'adb', 'root'].includes(entry.plugin.requiredAccess)) {
+    if (entry.plugin.version !== entry.version) fail(`${id}: plugin.version 必须与 version 一致`)
+    if (entry.plugin.apiLevel !== PLUGIN_API_LEVEL) fail(`${id}: plugin.apiLevel 必须是 ${PLUGIN_API_LEVEL}`)
+    if (!isVersionAtLeast(entry.plugin.minHostVersion, MIN_HOST_VERSION)) {
+      fail(`${id}: plugin.minHostVersion 必须不低于 ${MIN_HOST_VERSION}`)
+    }
+    if (!isPublisherKeyId(entry.plugin.publisherKeyId)) {
+      fail(`${id}: plugin.publisherKeyId 必须是 ed25519:<64 位小写 hex>`)
+    }
+    if (entry.plugin.requiredAccess !== undefined && !['normal', 'adb', 'root'].includes(entry.plugin.requiredAccess)) {
       fail(`${id}: plugin.requiredAccess 必须是 normal/adb/root`)
     }
-    if (entry.plugin?.previews !== undefined) {
+    if (entry.plugin.previews !== undefined) {
       if (!Array.isArray(entry.plugin.previews) || entry.plugin.previews.length === 0 || entry.plugin.previews.length > 6) {
         fail(`${id}: plugin.previews 必须是非空数组且最多 6 项`)
       } else if (entry.plugin.previews.some((url) => !isUrl(url))) {
@@ -243,4 +269,4 @@ if (errors.length > 0) {
 }
 
 const mode = schemaOnly ? 'schema only' : noSignature ? 'no signature' : 'signature valid'
-console.log(`OK: ${entries.length} entries, schema v3, ${mode}`)
+console.log(`OK: ${entries.length} entries, schema v3, plugin api level ${PLUGIN_API_LEVEL}, ${mode}`)

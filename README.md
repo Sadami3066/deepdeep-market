@@ -26,7 +26,7 @@ DeepDeep App 的市场页固定读取上面的索引，用内置公钥验证签�
 | `icons/` | 条目图标，`icons/<name>.png`，≤128KB；随 Pages 发布 |
 | `previews/` | 插件效果预览图；条目用 `raw.githubusercontent.com` URL 引用，Pages 不发布该目录 |
 | `scripts/` | `publish.mjs` 生成索引、`validate.mjs` 校验索引/签名/制品、`sign.mjs` 签名 |
-| `.github/workflows/` | `release.yml` 校验并部署 Pages、`validate.yml` 校验 PR、`validate-artifacts.yml` 每日校验制品 |
+| `.github/workflows/` | `release.yml` 校验、签名并部署 Pages（部署后回读线上 registry 校验）、`validate.yml` 校验 PR、`validate-artifacts.yml` 每日校验制品 |
 | `keys/market-public.pem` | 索引验签公钥；私钥不入库（`keys/*` 已被忽略，只保留该公钥） |
 | `PR_REVIEW.md` | 条目人工审核清单 |
 
@@ -57,11 +57,12 @@ DeepDeep App 的市场页固定读取上面的索引，用内置公钥验证签�
 **插件条目**
 
 - `artifact`：`{"url": "https://…", "sha256": "<64 位小写 hex>", "size": <字节数>}`，≤50MB；
-- `plugin.publisherKeyId`（必填）：发布者公钥 ID；App 安装时会用它校验 `.ddp` 内的 Ed25519 签名；
+- `plugin.publisherKeyId`（必填）：发布者公钥 ID，格式 `ed25519:<64 位小写 hex>`；App 安装时会用它校验 `.ddp` 内的 Ed25519 签名；
 - `plugin.publisherName`（可选）：发布者展示名，客户端优先显示，缺失时回落 `publisherKeyId` 前 12 位；
-- `plugin.apiLevel` / `plugin.minHostVersion`：客户端兼容性信息（当前校验脚本不强制）；
+- `plugin.apiLevel` / `plugin.minHostVersion`：客户端兼容性信息；校验脚本强制 `apiLevel = 6`、`minHostVersion ≥ 1.0.4`，客户端会禁用不满足条件的安装；
 - `plugin.requiredAccess`（可选）：插件运行需要的系统访问档位，`normal`（默认）/ `adb` / `root`；客户端会在当前启用权限低于要求时标注「部分功能可能不可用」，请如实标注、不要虚标；
 - `plugin.previews`（可选）：1–6 个 https 图片 URL；App 按竖版 9:20 卡片展示（建议 1080×2400 或 720×1600），点开可全屏左右滑动。
+- `plugin.version`：必须与条目 `version` 一致，并与 Release 资产文件名里的版本一致；插件只接受 API level 6（宿主 1.0.4+），level 5 插件不再上架。
 
 **技能条目**
 
@@ -97,7 +98,7 @@ cp entries/sample.json entries/skill/my-skill.json
 
 ### 2. 打包制品并上传 Release
 
-- 插件：Release 标签 `plugins-YYYYMMDD`，资产名 `<id 最后一段>-<version>.ddp`（如 `sysu-1.2.2.ddp`）；
+- 插件：Release 标签 `plugins-YYYYMMDD`（同日第二次发布加序号，如 `plugins-20261112-2`），资产名 `<id 最后一段>-<version>.ddp`（如 `sysu-2.0.0.ddp`）；
 - 技能：Release 标签 `skills-YYYYMMDD`，资产名 `<id>-<version>.zip`，zip 内为单个技能目录（含 `SKILL.md`，并附上游 `LICENSE` 与署名说明，如 `ATTRIBUTION.md`）；
 - MCP 没有制品，不需要 Release。
 
@@ -142,7 +143,8 @@ node scripts/validate.mjs --pub keys/market-public.pem --skip-artifacts
 2. `node scripts/validate.mjs --no-sig --tolerate-network` —— 校验索引并下载全部制品核对 `size`/`sha256`；
 3. `node scripts/sign.mjs --key-env MARKET_PRIVATE_KEY` —— 用 repository secret 签名；
 4. `node scripts/validate.mjs --pub keys/market-public.pem --skip-artifacts` —— 校验签名；
-5. 发布 `registry.json`、`registry.json.sig` 与 `icons/` 到 GitHub Pages。
+5. 发布 `registry.json`、`registry.json.sig` 与 `icons/` 到 GitHub Pages；
+6. 从 Pages 回读 `registry.json` / `registry.json.sig`，与本次生成结果逐字节比对并验签（最多等待 5 分钟传播），不一致即失败。
 
 `validate-artifacts.yml` 每天 18:30 UTC（北京时间次日 02:30）从 `master` 重新生成索引，并下载全部制品做严格校验，失败即 Actions 报错；GitHub Actions 的定时任务可能延迟。
 
@@ -160,11 +162,14 @@ node scripts/validate.mjs --pub keys/market-public.pem --skip-artifacts
 
 制品校验会下载每个 `artifact.url` 并比对 `size` 与 `sha256`。HTTP 4xx（404/403/410 等）是永久错误，直接失败；HTTP 5xx、408、425、429 以及 DNS/连接/超时等网络错误最多尝试 5 次（每次请求超时 180 秒），加 `--tolerate-network` 时最终降级为警告。`size`/`sha256` 不匹配始终失败。
 
+插件条目还会强制校验 `plugin.apiLevel = 6`、`plugin.minHostVersion ≥ 1.0.4`、`plugin.publisherKeyId` 格式与 `plugin.version`/`version` 一致性。
+
 ## 使用方式
 
 App 的市场页从固定 URL 读取索引：
 
 - 用内置公钥校验 `registry.json.sig`，并要求 `keyId` 匹配，然后展示插件、技能与 MCP；
+- 宿主版本低于条目 `minHostVersion` 或 `apiLevel` 不受支持时，客户端禁用安装并提示升级宿主；
 - 索引缓存 6 小时，刷新失败时回落到上次缓存；
 - 已安装的插件或技能有新版本时自动下载并安装，单个条目的重试间隔为 5 分钟；
 - MCP 条目在 App 内完成授权或填写凭据后连接（远程 HTTP，无本地命令）。
@@ -175,7 +180,7 @@ App 的市场页从固定 URL 读取索引：
 
 - **第三方制品**：本仓库只分发索引与 hash，插件/技能内容由各自作者提供。插件安装时 App 会校验包内 Ed25519 发布者签名与索引里的 `publisherKeyId` 是否一致；技能与 MCP 的安全性取决于上游来源与作者。
 - **制品可变**：GitHub Release 资产可以被同名覆盖或删除。索引发布后制品仍可能失效或被替换；App 下载后会校验 `size`/`sha256`，不匹配会拒绝安装，但索引本身可能仍显示"有更新"。发布前请确认 `artifact` 指向的资产已存在且不会再变更。
-- **部署容忍**：`release.yml` 使用 `--tolerate-network`，重试后仍是 5xx/429/网络错误时只警告并继续部署；每日 `validate-artifacts.yml` 会严格校验兜底。HTTP 4xx 会直接中止发布。
+- **部署容忍**：`release.yml` 使用 `--tolerate-network`，重试后仍是 5xx/429/网络错误时只警告并继续部署；每日 `validate-artifacts.yml` 会严格校验兜底。HTTP 4xx 会直接中止发布；部署后回读校验失败同样会让发布 workflow 失败。
 - **MCP**：第三方 MCP 服务适用其自身条款与隐私政策；API Key / OAuth 凭据由 App 保管，只发送给对应服务；市场只接受公开远程 HTTP 端点。
 - **图标与预览图**：`icons/` 随 Pages 发布；`previews/` 通过 `raw.githubusercontent.com` 提供，可用性与内容由 Git 托管方决定。
 

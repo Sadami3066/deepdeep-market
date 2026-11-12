@@ -45,3 +45,16 @@ jobs:
           path: site
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify deployed registry
+        run: |
+          base=https://sadami3066.github.io/deepdeep-market
+          for attempt in $(seq 1 30); do
+            curl -fsSL "$base/registry.json" -o /tmp/live-registry.json || true
+            curl -fsSL "$base/registry.json.sig" -o /tmp/live-registry.json.sig || true
+            if cmp -s /tmp/live-registry.json registry.json; then
+              break
+            fi
+            sleep 10
+          done
+          cmp /tmp/live-registry.json registry.json
+          node scripts/validate.mjs --in /tmp/live-registry.json --sig /tmp/live-registry.json.sig --pub keys/market-public.pem --skip-artifacts
