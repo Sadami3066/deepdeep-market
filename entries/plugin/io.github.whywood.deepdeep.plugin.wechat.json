@@ -2,8 +2,8 @@
   "type": "plugin",
   "id": "io.github.whywood.deepdeep.plugin.wechat",
   "name": {
-    "zh": "微信导出",
-    "en": "WeChat Export"
+    "zh": "微信聊天记录",
+    "en": "WeChat Chat History"
   },
   "summary": {
     "zh": "按日期范围导出完整微信记录",

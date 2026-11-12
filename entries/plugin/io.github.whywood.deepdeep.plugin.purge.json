@@ -1,0 +1,45 @@
+{
+  "type": "plugin",
+  "id": "io.github.whywood.deepdeep.plugin.purge",
+  "name": {
+    "zh": "网络攻防",
+    "en": "NetSec"
+  },
+  "summary": {
+    "zh": "安全作业口径、红队 runbook 与交付纪律",
+    "en": "Security-ops rules, red-team runbooks and delivery discipline"
+  },
+  "description": {
+    "zh": "在会话中注入安全作业口径与红队 runbook，覆盖侦察、漏洞验证、凭据测试、隧道与内网横向。命中安全类请求时附带对应 runbook 原文；模型拒答时补一条可直接执行的内容。仅用于自有或受托资产的授权测试。",
+    "en": "Inject security-ops rules and red-team runbooks into the session, covering recon, vulnerability verification, credential testing, tunnels and lateral movement. Matched requests carry the original runbook; when the model refuses, a directly usable fallback is posted. For authorized testing of owned or entrusted assets only."
+  },
+  "icon": "icons/netsec.png",
+  "tags": {
+    "zh": [
+      "网络攻防",
+      "安全",
+      "红队",
+      "渗透测试"
+    ],
+    "en": [
+      "NetSec",
+      "Security",
+      "Red team",
+      "Pentest"
+    ]
+  },
+  "version": "1.0.1",
+  "artifact": {
+    "url": "https://github.com/Sadami3066/DeepDeep-Purge/releases/download/plugins-20261112/purge-1.0.1.ddp",
+    "sha256": "4070fbea6d93f8ee55f36e04e4f6d7d0442e2294a1d80d7af47cfb6db8e999d4",
+    "size": 994737
+  },
+  "plugin": {
+    "apiLevel": 6,
+    "minHostVersion": "1.0.4",
+    "publisherKeyId": "ed25519:898b5a12922251d5b291141142bb2b44dd2c1609016fc0c11050fc5f2d863b19",
+    "publisherName": "milous",
+    "requiredAccess": "normal",
+    "version": "1.0.1"
+  }
+}
