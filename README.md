@@ -23,7 +23,7 @@ DeepDeep App 的市场页固定读取上面的索引，用内置公钥验证签�
 | --- | --- |
 | `entries/plugin/`、`entries/skill/`、`entries/mcp/` | 条目源文件，一条一个 JSON；`publish.mjs` 按目录校验 `type` 并生成索引 |
 | `entries/sample.json` | 条目字段模板（技能示例），不参与发布 |
-| `icons/` | 条目图标，`icons/<name>.png`，≤128KB；随 Pages 发布 |
+| `icons/` | 条目图标，`icons/<name>.png`，≤128KB；`publish.mjs` 自动追加内容哈希 `?v=<sha256 前 12 位>`，随 Pages 发布 |
 | `previews/` | 插件效果预览图；条目用 `raw.githubusercontent.com` URL 引用，Pages 不发布该目录 |
 | `scripts/` | `publish.mjs` 生成索引、`validate.mjs` 校验索引/签名/制品、`sign.mjs` 签名 |
 | `.github/workflows/` | `release.yml` 校验、签名并部署 Pages（部署后回读线上 registry 校验）、`validate.yml` 校验 PR、`validate-artifacts.yml` 每日校验制品 |
@@ -52,7 +52,7 @@ DeepDeep App 的市场页固定读取上面的索引，用内置公钥验证签�
 - `version`：字符串；
 - `name` / `summary` / `description`：`{"zh": "…", "en": "…"}`，两种语言都不能为空；
 - `tags`：`{"zh": ["…"], "en": ["…"]}`，两种语言都至少一项；
-- `icon`（可选）：`icons/<name>.png`，≤128KB 且必须是 PNG。
+- `icon`（可选）：`icons/<name>.png`，≤128KB 且必须是 PNG。`publish.mjs` 会按当前文件内容追加 `?v=<sha256 前 12 位>`；客户端按带版本的 URL 缓存，替换图标内容后重新发布即自动失效，不要手写 `?v=`。
 
 **插件条目**
 
@@ -182,7 +182,7 @@ App 的市场页从固定 URL 读取索引：
 - **制品可变**：GitHub Release 资产可以被同名覆盖或删除。索引发布后制品仍可能失效或被替换；App 下载后会校验 `size`/`sha256`，不匹配会拒绝安装，但索引本身可能仍显示"有更新"。发布前请确认 `artifact` 指向的资产已存在且不会再变更。
 - **部署容忍**：`release.yml` 使用 `--tolerate-network`，重试后仍是 5xx/429/网络错误时只警告并继续部署；每日 `validate-artifacts.yml` 会严格校验兜底。HTTP 4xx 会直接中止发布；部署后回读校验失败同样会让发布 workflow 失败。
 - **MCP**：第三方 MCP 服务适用其自身条款与隐私政策；API Key / OAuth 凭据由 App 保管，只发送给对应服务；市场只接受公开远程 HTTP 端点。
-- **图标与预览图**：`icons/` 随 Pages 发布；`previews/` 通过 `raw.githubusercontent.com` 提供，可用性与内容由 Git 托管方决定。
+- **图标与预览图**：`icons/` 随 Pages 发布，索引里的图标 URL 带内容哈希，内容不变客户端不重复下载；`previews/` 通过 `raw.githubusercontent.com` 提供，URL 由插件作者维护，可用性与内容由 Git 托管方决定，作者换图时应自行改 URL 或加版本参数。
 
 ## 权益与许可
 

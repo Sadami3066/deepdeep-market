@@ -125,15 +125,23 @@ for (const [index, entry] of entries.entries()) {
   checkTags(entry.tags, id)
 
   if (entry.icon !== undefined) {
-    if (typeof entry.icon !== 'string' || !/^icons\/[A-Za-z0-9._-]+\.png$/.test(entry.icon)) {
-      fail(`${id}: icon 必须是 icons/<name>.png`)
+    const iconMatch = typeof entry.icon === 'string'
+      ? /^icons\/([A-Za-z0-9._-]+\.png)(?:\?v=([0-9a-f]{12}))?$/.exec(entry.icon)
+      : null
+    if (iconMatch === null) {
+      fail(`${id}: icon 必须是 icons/<name>.png（publish 会追加 ?v=<内容哈希>）`)
     } else {
-      const iconPath = join(root, entry.icon)
+      const iconPath = join(root, 'icons', iconMatch[1])
       if (!existsSync(iconPath)) {
-        fail(`${id}: icon 文件不存在 ${entry.icon}`)
+        fail(`${id}: icon 文件不存在 ${iconMatch[1]}`)
       } else {
         if (statSync(iconPath).size > 128 * 1024) fail(`${id}: icon 超过 128KB`)
         if (readFileSync(iconPath).subarray(0, 8).toString('hex') !== '89504e470d0a1a0a') fail(`${id}: icon 不是 PNG`)
+        const version = iconMatch[2]
+        if (version !== undefined) {
+          const digest = createHash('sha256').update(readFileSync(iconPath)).digest('hex').slice(0, 12)
+          if (digest !== version) fail(`${id}: icon 内容哈希与 ?v= 不一致，请重新运行 publish`)
+        }
       }
     }
   }
