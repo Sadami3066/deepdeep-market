@@ -1,0 +1,43 @@
+{
+  "type": "plugin",
+  "id": "io.github.whywood.deepdeep.plugin.mail",
+  "name": {
+    "zh": "邮箱",
+    "en": "Mail"
+  },
+  "summary": {
+    "zh": "接入 IMAP/SMTP 邮箱，读信、找信、起草回复",
+    "en": "Read, search, and draft replies in your IMAP/SMTP mailbox"
+  },
+  "description": {
+    "zh": "用授权码或应用专用密码接入 QQ、163、126、腾讯企业邮、阿里云邮箱、Gmail、iCloud、Fastmail、Yahoo、Zoho 与自定义 IMAP/SMTP 邮箱。\n插件提供邮件列表、会话阅读、写信、账户管理与新邮件通知，并让 Agent 搜索、阅读、归档邮件和起草回复；发送前由你确认。",
+    "en": "Connect QQ, 163, 126, Tencent Exmail, Alibaba Mail, Gmail, iCloud, Fastmail, Yahoo, Zoho or any custom IMAP/SMTP mailbox with an authorization code or app password.\nThe plugin provides a message list, conversation reading, composing, account management and new mail notifications, and lets the agent search, read, archive and draft replies; you confirm before anything is sent."
+  },
+  "icon": "icons/mail.png",
+  "tags": {
+    "zh": [
+      "邮箱",
+      "邮件",
+      "办公"
+    ],
+    "en": [
+      "Mail",
+      "Email",
+      "Productivity"
+    ]
+  },
+  "version": "1.0.0",
+  "artifact": {
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261113/mail-1.0.0.ddp",
+    "sha256": "ac58352aa3f7d5eca8de4b1da6ed216bdb54931d092a8cfa70646ab49e214279",
+    "size": 1601741
+  },
+  "plugin": {
+    "apiLevel": 6,
+    "minHostVersion": "1.0.5",
+    "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2",
+    "publisherName": "milous",
+    "requiredAccess": "normal",
+    "version": "1.0.0"
+  }
+}
