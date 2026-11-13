@@ -26,18 +26,18 @@
       "Chat history"
     ]
   },
-  "version": "0.3.0",
+  "version": "0.4.0",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261112-2/wechat-0.3.0.ddp",
-    "sha256": "0f28df818a32351cb58fc243846801083f787ca98575204574102a58a510fd97",
-    "size": 868117
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261113-2/wechat-0.4.0.ddp",
+    "sha256": "5bb6508523395445255ba37759705902da52e70186f92e6bc547a5927c2b7566",
+    "size": 874183
   },
   "plugin": {
     "apiLevel": 6,
-    "minHostVersion": "1.0.4",
+    "minHostVersion": "1.0.6",
     "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2",
     "publisherName": "milous",
     "requiredAccess": "root",
-    "version": "0.3.0"
+    "version": "0.4.0"
   }
 }
