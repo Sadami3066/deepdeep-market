@@ -10,8 +10,8 @@
     "en": "Read, search, draft and send from your IMAP/SMTP mailbox"
   },
   "description": {
-    "zh": "用授权码或应用专用密码接入 QQ、163、126、腾讯企业邮、阿里云邮箱、Gmail、iCloud、Fastmail、Yahoo、Zoho 与自定义 IMAP/SMTP 邮箱。\n插件提供邮件列表、会话阅读、写信（含附件）、账户管理、后台定时同步与新邮件通知；聊天里的邮件卡片可以直接打开线程 sheet，Agent 可以搜索、阅读、归档、起草，并在你明确要求时直接发送。",
-    "en": "Connect QQ, 163, 126, Tencent Exmail, Alibaba Mail, Gmail, iCloud, Fastmail, Yahoo, Zoho or any custom IMAP/SMTP mailbox with an authorization code or app password.\nThe plugin provides a message list, conversation reading, composing with attachments, account management, background sync and notifications; mail cards in chat open the thread sheet in place, and the agent can search, read, archive, draft and send directly when you ask."
+    "zh": "用授权码或应用专用密码接入 QQ、163、126、腾讯企业邮、阿里云邮箱、Gmail、iCloud、Fastmail、Yahoo、Zoho 与自定义 IMAP/SMTP 邮箱。\n插件提供邮件列表、会话阅读、写信（含附件）、账户管理、后台定时同步与新邮件通知；HTML 正文按原排版渲染，支持表格、内嵌样式与图片，发件人显示头像；聊天里的邮件卡片可以直接打开线程 sheet，Agent 可以搜索、阅读、归档、起草，并在你明确要求时直接发送。",
+    "en": "Connect QQ, 163, 126, Tencent Exmail, Alibaba Mail, Gmail, iCloud, Fastmail, Yahoo, Zoho or any custom IMAP/SMTP mailbox with an authorization code or app password.\nThe plugin provides a message list, conversation reading, composing with attachments, account management, background sync and notifications; HTML bodies keep their original layout with tables, inline styles and images, and senders show avatars; mail cards in chat open the thread sheet in place, and the agent can search, read, archive, draft and send directly when you ask."
   },
   "icon": "icons/mail.png",
   "tags": {
@@ -26,11 +26,11 @@
       "Productivity"
     ]
   },
-  "version": "1.4.0",
+  "version": "1.4.1",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261114/mail-1.4.0.ddp",
-    "sha256": "50ae40951edbe472cf2ca56f324472ffc5b69b7cddd2922e7e010a048b583361",
-    "size": 1739646
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261114-2/mail-1.4.1.ddp",
+    "sha256": "b5dee18686c3304b7887053e876e071112903e21815c23a2ab46fe35ca71f3ac",
+    "size": 1759747
   },
   "plugin": {
     "apiLevel": 6,
@@ -38,6 +38,6 @@
     "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2",
     "publisherName": "milous",
     "requiredAccess": "normal",
-    "version": "1.4.0"
+    "version": "1.4.1"
   }
 }
