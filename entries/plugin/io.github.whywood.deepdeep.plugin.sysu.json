@@ -26,15 +26,15 @@
       "CLI"
     ]
   },
-  "version": "2.1.0",
+  "version": "2.2.0",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261113-2/sysu-2.1.0.ddp",
-    "sha256": "a53807f99e8b30bc2ea99cdae62211c51f990ba516f43da9f90737610c792213",
-    "size": 954276
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261114/sysu-2.2.0.ddp",
+    "sha256": "63b9511802adb07485bcd8ab7f4eacb0a371f5dacc54fcd51b4aaf65ddec7a4d",
+    "size": 971771
   },
   "plugin": {
     "apiLevel": 6,
-    "minHostVersion": "1.0.6",
+    "minHostVersion": "1.0.8",
     "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2",
     "publisherName": "milous",
     "requiredAccess": "normal",
@@ -42,6 +42,6 @@
       "https://raw.githubusercontent.com/Sadami3066/deepdeep-market/master/previews/sysu-1.jpg",
       "https://raw.githubusercontent.com/Sadami3066/deepdeep-market/master/previews/sysu-2.jpg"
     ],
-    "version": "2.1.0"
+    "version": "2.2.0"
   }
 }

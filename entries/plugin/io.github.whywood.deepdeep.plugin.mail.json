@@ -6,12 +6,12 @@
     "en": "Mail"
   },
   "summary": {
-    "zh": "接入 IMAP/SMTP 邮箱，读信、找信、带附件起草回复",
-    "en": "Read, search, and draft replies with attachments in your IMAP/SMTP mailbox"
+    "zh": "接入 IMAP/SMTP 邮箱，读信、找信、起草与发送",
+    "en": "Read, search, draft and send from your IMAP/SMTP mailbox"
   },
   "description": {
-    "zh": "用授权码或应用专用密码接入 QQ、163、126、腾讯企业邮、阿里云邮箱、Gmail、iCloud、Fastmail、Yahoo、Zoho 与自定义 IMAP/SMTP 邮箱。\n插件提供邮件列表、会话阅读、写信（含附件）、账户管理、后台定时同步与新邮件通知，并让 Agent 搜索、阅读、归档邮件和起草带附件的回复；发送前由你确认。",
-    "en": "Connect QQ, 163, 126, Tencent Exmail, Alibaba Mail, Gmail, iCloud, Fastmail, Yahoo, Zoho or any custom IMAP/SMTP mailbox with an authorization code or app password.\nThe plugin provides a message list, conversation reading, composing with attachments, account management, background sync and new mail notifications, and lets the agent search, read, archive and draft replies with attachments; you confirm before anything is sent."
+    "zh": "用授权码或应用专用密码接入 QQ、163、126、腾讯企业邮、阿里云邮箱、Gmail、iCloud、Fastmail、Yahoo、Zoho 与自定义 IMAP/SMTP 邮箱。\n插件提供邮件列表、会话阅读、写信（含附件）、账户管理、后台定时同步与新邮件通知；聊天里的邮件卡片可以直接打开线程 sheet，Agent 可以搜索、阅读、归档、起草，并在你明确要求时直接发送。",
+    "en": "Connect QQ, 163, 126, Tencent Exmail, Alibaba Mail, Gmail, iCloud, Fastmail, Yahoo, Zoho or any custom IMAP/SMTP mailbox with an authorization code or app password.\nThe plugin provides a message list, conversation reading, composing with attachments, account management, background sync and notifications; mail cards in chat open the thread sheet in place, and the agent can search, read, archive, draft and send directly when you ask."
   },
   "icon": "icons/mail.png",
   "tags": {
@@ -26,18 +26,18 @@
       "Productivity"
     ]
   },
-  "version": "1.2.0",
+  "version": "1.4.0",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261113-2/mail-1.2.0.ddp",
-    "sha256": "1ce9326ebbe0bce9c494e6270f2e68caee74a42332744c539266d47963781d57",
-    "size": 1710762
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261114/mail-1.4.0.ddp",
+    "sha256": "50ae40951edbe472cf2ca56f324472ffc5b69b7cddd2922e7e010a048b583361",
+    "size": 1739646
   },
   "plugin": {
     "apiLevel": 6,
-    "minHostVersion": "1.0.6",
+    "minHostVersion": "1.0.8",
     "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2",
     "publisherName": "milous",
     "requiredAccess": "normal",
-    "version": "1.2.0"
+    "version": "1.4.0"
   }
 }

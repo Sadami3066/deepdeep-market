@@ -26,18 +26,18 @@
       "Messaging"
     ]
   },
-  "version": "2.1.0",
+  "version": "2.2.0",
   "artifact": {
-    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261113-2/wecom-2.1.0.ddp",
-    "sha256": "3a459d174f65873c9cca2b1ab68f5430416a3132d84e2ea28dd3dc0cf06bc338",
-    "size": 968864
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261114/wecom-2.2.0.ddp",
+    "sha256": "28149fe1923fdfe14d7006e0421744367da69ced7c1f65de849563f040930ec3",
+    "size": 985302
   },
   "plugin": {
     "apiLevel": 6,
-    "minHostVersion": "1.0.6",
+    "minHostVersion": "1.0.8",
     "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2",
     "publisherName": "milous",
     "requiredAccess": "normal",
-    "version": "2.1.0"
+    "version": "2.2.0"
   }
 }

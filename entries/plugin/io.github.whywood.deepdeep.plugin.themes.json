@@ -1,0 +1,43 @@
+{
+  "type": "plugin",
+  "id": "io.github.whywood.deepdeep.plugin.themes",
+  "name": {
+    "zh": "主题",
+    "en": "Themes"
+  },
+  "summary": {
+    "zh": "八套精选配色，为 DeepDeep 换一种气质",
+    "en": "Eight curated palettes that give DeepDeep a different mood"
+  },
+  "description": {
+    "zh": "为主题库加入海盐、苔原、晚霞、樱、墨玉、夜航、咖啡与石墨八套固定配色，在设置 → 主题里一键切换。\n主题只改变颜色，主界面、插件页面、系统助手浮层、悬浮窗与状态栏会一起生效；不需要工具或后台权限。",
+    "en": "Adds eight fixed palettes — Harbor, Tundra, Dusk, Sakura, Jade, Nightfall, Mocha and Graphite — to the theme library, switched from Settings → Theme.\nThemes only change colours and apply across the main UI, plugin pages, the assistant overlay, floating windows and the status bar; no tools or background access are required."
+  },
+  "icon": "icons/themes.png",
+  "tags": {
+    "zh": [
+      "主题",
+      "配色",
+      "外观"
+    ],
+    "en": [
+      "Themes",
+      "Colours",
+      "Appearance"
+    ]
+  },
+  "version": "1.0.0",
+  "artifact": {
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261114/themes-1.0.0.ddp",
+    "sha256": "343c30d711ee4a2b82a20e37e8769f39f3138a42b3fbe2758c5a11cf05f9a0c5",
+    "size": 815861
+  },
+  "plugin": {
+    "apiLevel": 6,
+    "minHostVersion": "1.0.8",
+    "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2",
+    "publisherName": "milous",
+    "requiredAccess": "normal",
+    "version": "1.0.0"
+  }
+}
