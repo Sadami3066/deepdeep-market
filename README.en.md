@@ -171,7 +171,7 @@ The App's Market tab loads the registry from the fixed URL:
 - it verifies `registry.json.sig` with the built-in public key and requires `keyId` to match, then lists plugins, skills, and MCP;
 - the registry is cached for 6 hours; if a refresh fails, the last cache is used;
 - the client disables installation and asks the user to upgrade the host when the host version is below an entry's `minHostVersion` or the entry's `apiLevel` is unsupported;
-- installed plugins and skills download and install updates automatically, retrying each entry at most every 5 minutes;
+- a refresh only recomputes install states: entries with a newer version show "Update" and download only after the user taps them; for plugins, the update takes effect after "Update now" in plugin details or on the next launch;
 - MCP entries connect after you authorize or enter credentials in the App (remote HTTP only, no local commands).
 
 To install a plugin manually, download the `.ddp` from its Release and use "Import plugin" on the App's Plugins screen. Imports are treated as untrusted sources: the App shows the plugin, publisher, and `sha256` before you confirm. Skills and MCP are installed or configured through the Market.
