@@ -1,0 +1,43 @@
+{
+  "type": "plugin",
+  "id": "io.github.whywood.deepdeep.plugin.zanao",
+  "name": {
+    "zh": "校园集市",
+    "en": "Campus Market"
+  },
+  "summary": {
+    "zh": "赞噢校园集市，内置离线 Token 捕捉器",
+    "en": "Zanao campus marketplace with a bundled offline token catcher"
+  },
+  "description": {
+    "zh": "内置「集市 Token 捕捉器」，只在本机离线处理登录凭证，不上传数据。导入账号后可浏览帖子、搜索、评论、点赞、消息、个人资料与发帖，并附带 zanao CLI 技能。",
+    "en": "Bundles the offline Zanao token catcher; credentials stay on-device and nothing is uploaded. Import an account to browse threads, search, comment, like, read messages and profile, and post. Includes the zanao CLI skill."
+  },
+  "icon": "icons/zanao.png",
+  "tags": {
+    "zh": [
+      "校园集市",
+      "校园",
+      "命令行"
+    ],
+    "en": [
+      "Campus market",
+      "Campus",
+      "CLI"
+    ]
+  },
+  "version": "1.0.13",
+  "artifact": {
+    "url": "https://github.com/Sadami3066/deepdeep-market/releases/download/plugins-20261114-4/zanao-1.0.13.ddp",
+    "sha256": "04e5733b36916376df091dc20d5652861ccc6b36e5acc112138352eca4cff148",
+    "size": 1720887
+  },
+  "plugin": {
+    "apiLevel": 6,
+    "minHostVersion": "1.0.8",
+    "publisherKeyId": "ed25519:cb08701a59d66606aa5cf461d1c865e3787dbf571ef53b2cd2c3d750a6b53ee2",
+    "publisherName": "milous",
+    "requiredAccess": "normal",
+    "version": "1.0.13"
+  }
+}
